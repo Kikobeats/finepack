@@ -1,0 +1,34 @@
+{
+  "description": "cli tool that cleans up package.json files.",
+  "name": "fishpack",
+  "version": "1.0.0",
+  "bin": "./bin/fishpack",
+  "bugs": {
+    "url": "https://github.com/Kikobeats/fishpack/issues"
+  },
+  "dependencies": {
+    "chalk": "*",
+    "coffee-script": "*",
+    "sort-keys-recursive": "*"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "homepage": "https://github.com/Kikobeats/fishpack",
+  "keywords": [
+    "cleanup",
+    "cli",
+    "package",
+    "tool"
+  ],
+  "scripts": {
+    "test": "sh test/test.sh"
+  },
+  "license": "MIT",
+  "main": "fishpack.js",
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Kikobeats/fishpack"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "version": "1.0.0",
+  "description": "",
+  "author": {
+    "name": "Kiko Beats",
+    "email": "josefrancisco.verdu@gmail.com",
+    "url": "https://github.com/Kikobeats"
+  },
+  "bin": "./bin/fishpack",
+  "bugs": {
+    "url": "https://github.com/Kikobeats/fishpack/issues"
+  },
+  "dependencies": {
+    "coffee-script": "*",
+    "sort-keys-recursive": "*",
+    "chalk": "*"
+  },
+  "homepage": "https://github.com/Kikobeats/fishpack",
+  "keywords": [
+    "package",
+    "cleanup",
+    "cli",
+    "tool"
+  ],
+  "license": "MIT",
+  "main": "fishpack.js",
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Kikobeats/fishpack"
+  },
+  "scripts": {
+    "test": "sh test/test.sh"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  }
+}

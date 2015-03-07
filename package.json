@@ -1,0 +1,42 @@
+{
+  "name": "finepack",
+  "description": "Organizes and maintains readable your JSON files",
+  "version": "1.0.0",
+  "author": {
+    "name": "Kiko Beats",
+    "email": "josefrancisco.verdu@gmail.com",
+    "url": "https://github.com/Kikobeats"
+  },
+  "bin": "./bin/index.js",
+  "bugs": {
+    "url": "https://github.com/Kikobeats/finepack/issues"
+  },
+  "dependencies": {
+    "chalk": "*",
+    "coffee-script": "*",
+    "meow": "*",
+    "sort-keys-recursive": "*",
+    "update-notifier": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "homepage": "https://github.com/Kikobeats/finepack",
+  "keywords": [
+    "cleanup",
+    "cli",
+    "package",
+    "tool"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Kikobeats/finepack"
+  },
+  "scripts": {
+    "test": "sh test/test.sh"
+  }
+}
