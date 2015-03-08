@@ -26,10 +26,18 @@ module.exports = class Logger
     @add 'info', "#{chalk.gray("info")}: #{msg}"
 
   @print: (messages)->
-    haveWarningOrErrorMessages =
+
+    isFinalMessage = false
+
+    isWarningOrErrorMessage =
       (messages['warning'].length isnt 0) or (messages['error'].length isnt 0)
 
-    console.log()
+    isSuccessOrInfoMessage = (type) ->
+      return false if isFinalMessage
+      isFinalMessage = true if (type is 'success') or (type is 'info')
+
+    console.log() if isWarningOrErrorMessage
+
     for type in Logger.types
-      console.log() if haveWarningOrErrorMessages
+      console.log() if isSuccessOrInfoMessage(type)
       console.log message for message in messages[type]
