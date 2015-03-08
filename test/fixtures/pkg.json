@@ -1,6 +1,6 @@
 {
-  "description": "cli tool that cleans up package.json files.",
   "name": "fishpack",
+  "description": "cli tool that cleans up package.json files.",
   "version": "1.0.0",
   "bin": "./bin/fishpack",
   "bugs": {

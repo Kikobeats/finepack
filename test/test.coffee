@@ -32,7 +32,7 @@ describe 'Finepack ::', ->
 
   it "doesn't validate by default", (done)  ->
     options =
-      filePath: @fileNormal
+      filepath: @fileNormal
 
     Finepack options, (err, data) ->
       (err?).should.eql.false
@@ -42,7 +42,7 @@ describe 'Finepack ::', ->
 
   it 'Lint a file without important required keys', (done) ->
     options =
-      filePath: path.resolve @fileRequired
+      filepath: path.resolve @fileRequired
       lint : true
 
     Finepack options, (err, data) ->
@@ -53,7 +53,7 @@ describe 'Finepack ::', ->
 
   it 'Lint file without recommended keys', (done) ->
     options =
-      filePath: path.resolve @fileMissing
+      filepath: path.resolve @fileMissing
       lint : true
 
     Finepack options, (err, data) ->
@@ -64,7 +64,7 @@ describe 'Finepack ::', ->
 
   it 'Lint a file that is already linted', (done) ->
     options =
-      filePath: path.resolve @fileNormal
+      filepath: path.resolve @fileNormal
       lint : true
 
     Finepack options, (err, data) ->

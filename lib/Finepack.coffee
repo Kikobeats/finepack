@@ -17,9 +17,9 @@ recursiveSortKeys = require 'sort-keys-recursive'
 ###
 module.exports = (options, cb) ->
   report    = new Report options.filepath
-  fileInput = fs.readFileSync options.filepath, encoding: 'utf8'
+  fileinput = fs.readFileSync options.filepath, encoding: 'utf8'
   filename  = path.basename options.filepath
-  input     = JSON.parse fileInput
+  input     = JSON.parse fileinput
   output    = {}
 
   lint = if options.lint? then options.lint else false
@@ -32,9 +32,9 @@ module.exports = (options, cb) ->
 
   input = recursiveSortKeys input
   output[key] = value for key, value of input
-  fileOutput = JSON.stringify(output, null, 2) + os.EOL
-  fs.writeFileSync options.filepath, fileOutput, encoding: 'utf8'
+  fileoutput = JSON.stringify(output, null, 2) + os.EOL
+  fs.writeFileSync options.filepath, fileoutput, encoding: 'utf8'
 
   return report.missingMessage(cb) if reporter.haveMissingErrors
-  return report.alreadyMessage(cb) if fileInput is fileOutput
+  return report.alreadyMessage(cb) if fileinput is fileoutput
   report.successMessage(cb)
