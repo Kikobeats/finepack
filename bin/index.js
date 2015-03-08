@@ -24,7 +24,7 @@ if (cli.input.length === 0) cli.showHelp()
 
 var options = {
   filepath: path.resolve(cli.input[0]),
-  lint: cli.flags.l || true
+  lint: cli.flags.l ? false : true
 }
 
 Finepack(options, function(err, messages){
