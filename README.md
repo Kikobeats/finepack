@@ -50,15 +50,18 @@ For uses inside your NodeJS project, just install as normal dependency.
 ```js
 var finepack = require('finepack');
 var path     = require('path');
+var filename = path.basename(filepath);
+var filepath = path.resolve('./package.json');
+var filedata = fs.readFileSync(filepath, {encoding: 'utf8'});
 
 var options = {
-  filepath: path.resolve('./package.json'),
-  lint: false
+  filename: filename,
+  lint: false // or true!
 }
 
-finepack(options, function(err, data){
+finepack(filedata, options, function(err, output, messages){
   if (err){
-    // if you have a message.error or message.warning
+    // if you have a messages.error or messages.warning
     // then err is equal to true
     // 
     // this messages only appear if you activate the lint mode
@@ -69,5 +72,3 @@ finepack(options, function(err, data){
 ## License
 
 MIT © [Kiko Beats](http://www.kikobeats.com)
-
-
