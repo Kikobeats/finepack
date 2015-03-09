@@ -55,7 +55,7 @@ var filepath = path.resolve('./package.json');
 var filedata = fs.readFileSync(filepath, {encoding: 'utf8'});
 
 var options = {
-  filename: filename,
+  filename: filename, // for customize the output messages, but is not necessary
   lint: false // or true!
 }
 
