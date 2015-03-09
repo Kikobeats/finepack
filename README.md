@@ -48,10 +48,11 @@ $ finepack
 For uses inside your NodeJS project, just install as normal dependency.
 
 ```js
-var finepack = require('finepack');
+var fs       = require('fs');
 var path     = require('path');
-var filename = path.basename(filepath);
+var finepack = require('finepack');
 var filepath = path.resolve('./package.json');
+var filename = path.basename(filepath);
 var filedata = fs.readFileSync(filepath, {encoding: 'utf8'});
 
 var options = {
