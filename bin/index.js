@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 'use strict';
 require('coffee-script').register();
-var updateNotifier = require('update-notifier');
+var fs = require('fs');
 var path = require('path');
+var os = require('os');
+var updateNotifier = require('update-notifier');
 var Finepack = require('./../lib/Finepack');
-var Logger = require('./../lib/Logger')
+var Logger = require('./../lib/Logger');
 var cli = require('meow')({
   pkg: '../package.json',
   help: [
@@ -20,14 +22,21 @@ var cli = require('meow')({
 });
 
 updateNotifier({pkg: cli.pkg}).notify();
-if (cli.input.length === 0) cli.showHelp()
+if (cli.input.length === 0) cli.showHelp();
+
+var filepath = path.resolve(cli.input[0]);
+var filename = path.basename(filepath);
+var filedata = fs.readFileSync(filepath, {encoding: 'utf8'});
 
 var options = {
-  filepath: path.resolve(cli.input[0]),
+  filename: filename,
   lint: cli.flags.l ? false : true
-}
+};
 
-Finepack(options, function(err, messages){
-  Logger.print(messages);
-  if (err) return process.exit(1);
-})
+Finepack(filedata, options, function(error, output, messages){
+  var fileoutput = JSON.stringify(output, null, 2) + os.EOL;
+  fs.writeFile(filepath, fileoutput, {encoding: 'utf8'}, function (err) {
+    Logger.print(messages);
+    if (error || err) return process.exit(1);
+  });
+});

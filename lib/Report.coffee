@@ -1,18 +1,16 @@
 'use strict'
 
-path   = require 'path'
 chalk  = require 'chalk'
 Logger = require './Logger'
 keys   = require './Keywords'
 
 module.exports = class Report
 
-  constructor: (file) ->
+  constructor: (@filename='Your file') ->
     @logger = new Logger()
-    return @logger.error "You need to provide a file path." unless file
-    @filename = path.basename file
 
-  @default: haveRequiredErrors: false, haveMissingErrors: false
+  @default:
+    haveRequiredErrors: false, haveMissingErrors: false
 
   required : (file) ->
     haveRequiredValues = false
@@ -32,18 +30,18 @@ module.exports = class Report
     haveRequiredErrors : @required file
     haveMissingErrors  : @missing  file
 
-  successMessage: (cb) ->
+  successMessage: (cb, data) ->
     @logger.success("#{chalk.bold(@filename)} is now #{chalk.bold("fine")}!")
-    cb(null, @logger.messages)
+    cb(null, data, @logger.messages)
 
-  requiredMessage: (cb) ->
+  requiredMessage: (cb, data) ->
     @logger.info("#{chalk.bold(@filename)} isn't #{chalk.bold('fine')}. Check the file and run again.")
-    cb(true, @logger.messages)
+    cb(true, data, @logger.messages)
 
-  missingMessage: (cb) ->
+  missingMessage: (cb, data) ->
     @logger.info("#{chalk.bold(@filename)} is near to be #{chalk.bold('fine')}. Check the file and run again.")
-    cb(true, @logger.messages)
+    cb(true, data, @logger.messages)
 
-  alreadyMessage: (cb) ->
+  alreadyMessage: (cb, data) ->
     @logger.info("#{chalk.bold(@filename)} is already #{chalk.bold("fine")}!")
-    cb(null, @logger.messages)
+    cb(null, data, @logger.messages)

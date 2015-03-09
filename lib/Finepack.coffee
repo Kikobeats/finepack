@@ -1,30 +1,29 @@
 'use strict'
 
-fs                = require 'fs'
-os                = require 'os'
-path              = require 'path'
-chalk             = require 'chalk'
 Report            = require './Report'
 Keywords          = require './Keywords'
 recursiveSortKeys = require 'sort-keys-recursive'
 
+isEquivalent = (objt1, objt2) ->
+  JSON.stringify(objt1, null, 2) is JSON.stringify(objt2, null, 2)
+
 ###
   @description Organize the keys of JSON file.
   @param {object} options, that can be:
-    - filepath: file to read.
-    - lint: Activate keyword validations.
-  @returns callback (error, data)
+    - data: content of a file to rebuild.
+    - options:
+      * lint: Activate keyword validations.
+      * filename: to customize the output messages
+  @returns callback (error, data, messages)
 ###
-module.exports = (options, cb) ->
-  report    = new Report options.filepath
-  fileinput = fs.readFileSync options.filepath, encoding: 'utf8'
-  filename  = path.basename options.filepath
-  input     = JSON.parse fileinput
-  output    = {}
+module.exports = (data, options, cb) ->
+  report = new Report options.filename
+  isLintEnable = options.lint or false
+  input  = JSON.parse data
+  output = {}
 
-  lint = if options.lint? then options.lint else false
-  reporter = unless lint then Report.default else report.resume input
-  return report.requiredMessage(cb) if reporter.haveRequiredErrors
+  reporter = if isLintEnable then report.resume input else Report.default
+  return report.requiredMessage(cb, input) if reporter.haveRequiredErrors
 
   for key in Keywords.important when input[key]?
     output[key] = input[key]
@@ -32,9 +31,7 @@ module.exports = (options, cb) ->
 
   input = recursiveSortKeys input
   output[key] = value for key, value of input
-  fileoutput = JSON.stringify(output, null, 2) + os.EOL
-  fs.writeFileSync options.filepath, fileoutput, encoding: 'utf8'
 
-  return report.missingMessage(cb) if reporter.haveMissingErrors
-  return report.alreadyMessage(cb) if fileinput is fileoutput
-  report.successMessage(cb)
+  return report.missingMessage(cb, output) if reporter.haveMissingErrors
+  return report.alreadyMessage(cb, output) if isEquivalent data, output
+  report.successMessage(cb, output)

@@ -31,43 +31,44 @@ describe 'Finepack ::', ->
 
 
   it "doesn't validate by default", (done)  ->
-    options =
-      filepath: @fileNormal
+    data = fs.readFileSync @fileNormal, {encoding: 'utf8'}
+    options = filename: 'pkg.json'
 
-    Finepack options, (err, data) ->
+    Finepack data, options, (err, output, messages) ->
       (err?).should.eql.false
-      (data.warning[0]?).should.be.equal false
-      (data.success[0]?).should.be.equal true
+      (messages.warning[0]?).should.be.equal false
+      (messages.success[0]?).should.be.equal true
+      (typeof output is 'object').should.be.equal true
       done()
 
   it 'Lint a file without important required keys', (done) ->
-    options =
-      filepath: path.resolve @fileRequired
-      lint : true
+    data = fs.readFileSync @fileRequired, {encoding: 'utf8'}
+    options = filename: 'pkg.json', lint: true
 
-    Finepack options, (err, data) ->
+    Finepack data, options, (err, output, messages) ->
       (err?).should.be.equal true
-      (data.error[0]?).should.be.equal true
-      (data.info[0]?).should.be.equal true
+      (messages.error[0]?).should.be.equal true
+      (messages.info[0]?).should.be.equal true
+      (typeof output is 'object').should.be.equal true
       done()
 
   it 'Lint file without recommended keys', (done) ->
-    options =
-      filepath: path.resolve @fileMissing
-      lint : true
+    data = fs.readFileSync @fileMissing, {encoding: 'utf8'}
+    options = filename: 'pkg.json', lint: true
 
-    Finepack options, (err, data) ->
+    Finepack data, options, (err, output, messages) ->
       (err?).should.be.equal true
-      (data.warning[0]?).should.be.equal true
-      (data.info[0]?).should.be.equal true
+      (messages.warning[0]?).should.be.equal true
+      (messages.info[0]?).should.be.equal true
+      (typeof output is 'object').should.be.equal true
       done()
 
   it 'Lint a file that is already linted', (done) ->
-    options =
-      filepath: path.resolve @fileNormal
-      lint : true
+    data = fs.readFileSync @fileNormal, {encoding: 'utf8'}
+    options = filename: 'pkg.json', lint: true
 
-    Finepack options, (err, data) ->
+    Finepack data, options, (err, output, messages) ->
       (err?).should.be.equal true
-      (data.info[0]?).should.be.equal true
+      (messages.info[0]?).should.be.equal true
+      (typeof output is 'object').should.be.equal true
       done()
