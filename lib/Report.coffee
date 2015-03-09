@@ -39,7 +39,7 @@ module.exports = class Report
     cb(true, data, @logger.messages)
 
   missingMessage: (cb, data) ->
-    @logger.info("#{chalk.bold(@filename)} is near to be #{chalk.bold('fine')}. Check the file and run again.")
+    @logger.info("#{chalk.bold(@filename)} is almost #{chalk.bold('fine')}. Check the file and run again.")
     cb(true, data, @logger.messages)
 
   alreadyMessage: (cb, data) ->
