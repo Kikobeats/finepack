@@ -55,7 +55,7 @@ var filepath = path.resolve('./package.json');
 var filedata = fs.readFileSync(filepath, {encoding: 'utf8'});
 
 var options = {
-  filename: filename,
+  filename: filename, // for customize the output messages, but is not necessary
   lint: false // or true!
 }
 
@@ -63,8 +63,7 @@ finepack(filedata, options, function(err, output, messages){
   if (err){
     // if you have a messages.error or messages.warning
     // then err is equal to true
-    // 
-    // this messages only appear if you activate the lint mode
+    // messages.error and messages.warning only appear if you activate the lint mode
   }
 });
 ```
@@ -72,5 +71,3 @@ finepack(filedata, options, function(err, output, messages){
 ## License
 
 MIT © [Kiko Beats](http://www.kikobeats.com)
-
-
