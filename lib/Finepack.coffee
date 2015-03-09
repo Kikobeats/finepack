@@ -19,7 +19,7 @@ isEquivalent = (objt1, objt2) ->
 module.exports = (data, options, cb) ->
   report = new Report options.filename
   isLintEnable = options.lint or false
-  input  = JSON.parse data
+  input  = if typeof data is 'string' then JSON.parse data else data
   output = {}
 
   reporter = if isLintEnable then report.resume input else Report.default
