@@ -7,7 +7,7 @@ module.exports = class Logger
   @types: ['error', 'warning', 'success', 'info']
 
   constructor: ->
-    @messages = []
+    @messages = {}
     @messages[type] = [] for type in Logger.types
 
   add: (type, content) ->
