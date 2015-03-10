@@ -4,29 +4,20 @@ chalk = require 'chalk'
 
 module.exports = class Logger
 
-  @types: ['error', 'warning', 'success', 'info']
-
-  constructor: ->
+  constructor: (@isColorizable = false) ->
     @messages = {}
     @messages[type] = [] for type in Logger.types
 
-  add: (type, content) ->
-    @messages[type].push content
+  add: (type, message) ->
+    messageType = @_messageTypeBuilder type
+    message = @_messageBuilder message
+    @messages[type].push "#{messageType}: #{message}"
 
-  error: (msg) ->
-    @add 'error', "#{chalk.red("error")}: #{chalk.gray(msg)}"
+  @types: ['error', 'warning', 'success', 'info']
 
-  warning: (msg) ->
-    @add 'warning', "#{chalk.yellow("warning")}: #{chalk.gray(msg)}"
-
-  success: (msg) ->
-    @add 'success', "#{chalk.green("success")}: #{msg}"
-
-  info: (msg) ->
-    @add 'info', "#{chalk.gray("info")}: #{msg}"
+  @colorType: error: 'red', warning: 'yellow', success: 'green', info: 'white'
 
   @print: (messages)->
-
     isFinalMessage = false
 
     isWarningOrErrorMessage =
@@ -41,3 +32,13 @@ module.exports = class Logger
     for type in Logger.types
       console.log() if isSuccessOrInfoMessage(type)
       console.log message for message in messages[type]
+
+  _messageBuilder: (message) ->
+    message = chalk.gray message if @isColorizable
+    message
+
+  _messageTypeBuilder: (messageType) ->
+    if @isColorizable
+      color = Logger.colorType[messageType]
+      return chalk[color](messageType)
+    messageType

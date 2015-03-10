@@ -12,13 +12,14 @@ isEquivalent = (objt1, objt2) ->
   @param {object} options, that can be:
     - data: content of a file to rebuild.
     - options:
-      * lint: Activate keyword validations.
-      * filename: to customize the output messages
+      * color {Boolean}: to indicate if put color in the messages.
+      * lint {Boolean}: Activate keyword validations.
+      * filename {String}: to customize the output messages
   @returns callback (error, data, messages)
 ###
 module.exports = (data, options, cb) ->
-  report = new Report options.filename
   isLintEnable = options.lint or false
+  report = new Report options.filename, options.color
   input  = if typeof data is 'string' then JSON.parse data else data
   output = {}
 

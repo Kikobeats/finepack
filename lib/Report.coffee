@@ -6,8 +6,8 @@ keys   = require './Keywords'
 
 module.exports = class Report
 
-  constructor: (@filename='Your file') ->
-    @logger = new Logger()
+  constructor: (@filename='Your file', @isColorizable=false) ->
+    @logger = new Logger @isColorizable
 
   @default:
     haveRequiredErrors: false, haveMissingErrors: false
@@ -15,14 +15,14 @@ module.exports = class Report
   required : (file) ->
     haveRequiredValues = false
     for key in keys.required when not file[key]?
-      @logger.error "required '#{key}'"
+      @logger.add 'error', "required '#{key}'"
       haveRequiredValues = true unless haveRequiredValues
     haveRequiredValues
 
   missing : (file) ->
     haveMissingValues = false
     for key in keys.missing when not file[key]?
-      @logger.warning "missing '#{key}'"
+      @logger.add 'warning', "missing '#{key}'"
       haveMissingValues = true unless haveMissingValues
     haveMissingValues
 
@@ -31,17 +31,30 @@ module.exports = class Report
     haveMissingErrors  : @missing  file
 
   successMessage: (cb, data) ->
-    @logger.success("#{chalk.bold(@filename)} is now #{chalk.bold("fine")}!")
+    message = "#{@filename} is now fine"
+    message = @_corolizeMessage message if @isColorizable
+    @logger.add 'success', message
     cb(null, data, @logger.messages)
 
   requiredMessage: (cb, data) ->
-    @logger.info("#{chalk.bold(@filename)} isn't #{chalk.bold('fine')}. Check the file and run again.")
+    message = "#{@filename} isn't fine. Check the file and run again."
+    message = @_corolizeMessage message if @isColorizable
+    @logger.add 'info', message
     cb(true, data, @logger.messages)
 
   missingMessage: (cb, data) ->
-    @logger.info("#{chalk.bold(@filename)} is almost #{chalk.bold('fine')}. Check the file and run again.")
+    message = "#{@filename} is almost fine. Check the file and run again."
+    message = @_corolizeMessage message if @isColorizable
+    @logger.add 'info', message
     cb(true, data, @logger.messages)
 
   alreadyMessage: (cb, data) ->
-    @logger.info("#{chalk.bold(@filename)} is already #{chalk.bold("fine")}!")
+    message = "#{@filename} is already fine"
+    message = @_corolizeMessage message if @isColorizable
+    @logger.add 'info', message
     cb(null, data, @logger.messages)
+
+  _corolizeMessage: (message) ->
+    message = message.replace @filename, chalk.bold(@filename)
+    message = message.replace 'fine', chalk.bold('fine')
+    message

@@ -13,11 +13,12 @@ var cli = require('meow')({
       'Usage',
       '  $ finepack <fileJSON> [options]',
       '\n  options:',
-      '\t -l\t     disable lint mode.',
+      '\t --no-lint\t     disable lint mode.',
+      '\t --no-colors\t   disable colors in the output.',
       '\t --version   output the current version.',
       '\n  examples:',
       '\t finepack package.json',
-      '\t finepack bower.json -l',
+      '\t finepack bower.json --no-lint',
   ].join('\n')
 });
 
@@ -30,7 +31,8 @@ var filedata = fs.readFileSync(filepath, {encoding: 'utf8'});
 
 var options = {
   filename: filename,
-  lint: cli.flags.l ? false : true
+  lint: cli.flags.lint != null ? cli.flags.lint : true,
+  color: cli.flags.colors != null ? cli.flags.colors : true
 };
 
 Finepack(filedata, options, function(error, output, messages){

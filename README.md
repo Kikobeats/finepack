@@ -56,8 +56,9 @@ var filename = path.basename(filepath);
 var filedata = fs.readFileSync(filepath, {encoding: 'utf8'});
 
 var options = {
-  filename: filename, // for customize the output messages, but is not necessary
-  lint: false // or true!
+  filename: filename, // for customize the output messages, but is not necessary.
+  lint: false, // For enable (or not) lint the keys (false by default).
+  color: false // For enable (or not) colorize or not the output (false by default).
 }
 
 finepack(filedata, options, function(err, output, messages){
