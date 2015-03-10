@@ -8,7 +8,7 @@
 
 > Organizes and maintains readable your JSON files.
 
-![](http://i.imgur.com/A56qwqo.png)
+![](http://i.imgur.com/2qNLC48.png)
 
 **Finepack** is a tool to keep your JSON files organized, specially if you are creating an open source project and want to be sure that your files have all the information that is necessary for the mainly packet systems (like bower or npm). With it you you'll:
 
