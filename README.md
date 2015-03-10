@@ -35,12 +35,13 @@ $ finepack
     $ finepack <fileJSON> [options]
 
     options:
-  	 -l	     disable lint mode.
-  	 --version   output the current version.
+     --no-lint   disable lint mode.
+     --no-colors   disable colors in the output.
+     --version   output the current version.
 
     examples:
-  	 finepack package.json
-  	 finepack bower.json -l
+     finepack package.json
+     finepack bower.json --no-lint
 ```
 
 ## API
