@@ -1,7 +1,7 @@
 'use strict'
 
 chalk  = require 'chalk'
-Logger = require './Logger'
+Logger = require 'acho'
 keys   = require './Keywords'
 
 module.exports = class Report
@@ -15,14 +15,14 @@ module.exports = class Report
   required : (file) ->
     haveRequiredValues = false
     for key in keys.required when not file[key]?
-      @logger.add 'error', "required '#{key}'"
+      @logger.push 'error', "required '#{key}'."
       haveRequiredValues = true unless haveRequiredValues
     haveRequiredValues
 
   missing : (file) ->
     haveMissingValues = false
     for key in keys.missing when not file[key]?
-      @logger.add 'warning', "missing '#{key}'"
+      @logger.push 'warning', "missing '#{key}'."
       haveMissingValues = true unless haveMissingValues
     haveMissingValues
 
@@ -31,30 +31,30 @@ module.exports = class Report
     haveMissingErrors  : @missing  file
 
   successMessage: (cb, data) ->
-    message = "#{@filename} is now fine"
+    message = "#{@filename} is now fine."
     message = @_corolizeMessage message if @isColorizable
-    @logger.add 'success', message
-    cb(null, data, @logger.messages)
+    @logger.push 'success', message
+    cb null, data, @logger.messages
 
   requiredMessage: (cb, data) ->
     message = "#{@filename} isn't fine. Check the file and run again."
     message = @_corolizeMessage message if @isColorizable
-    @logger.add 'info', message
-    cb(true, data, @logger.messages)
+    @logger.push 'info', message
+    cb true, data, @logger.messages
 
   missingMessage: (cb, data) ->
     message = "#{@filename} is almost fine. Check the file and run again."
     message = @_corolizeMessage message if @isColorizable
-    @logger.add 'info', message
-    cb(true, data, @logger.messages)
+    @logger.push 'info', message
+    cb true, data, @logger.messages
 
   alreadyMessage: (cb, data) ->
-    message = "#{@filename} is already fine"
+    message = "#{@filename} is already fine."
     message = @_corolizeMessage message if @isColorizable
-    @logger.add 'info', message
-    cb(null, data, @logger.messages)
+    @logger.push 'info', message
+    cb null, data, @logger.messages
 
   _corolizeMessage: (message) ->
-    message = message.replace @filename, chalk.bold(@filename)
-    message = message.replace 'fine', chalk.bold('fine')
+    message = message.replace @filename, chalk.bold @filename
+    message = message.replace 'fine', chalk.bold 'fine'
     message

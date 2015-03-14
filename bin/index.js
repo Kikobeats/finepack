@@ -6,7 +6,7 @@ var path = require('path');
 var os = require('os');
 var updateNotifier = require('update-notifier');
 var Finepack = require('./../lib/Finepack');
-var Logger = require('./../lib/Logger');
+var Logger = require('acho');
 var cli = require('meow')({
   pkg: '../package.json',
   help: [
@@ -18,7 +18,7 @@ var cli = require('meow')({
       '\t --version\t output the current version.',
       '\n  examples:',
       '\t finepack package.json',
-      '\t finepack bower.json --no-lint',
+      '\t finepack bower.json --no-lint'
   ].join('\n')
 });
 
@@ -35,10 +35,32 @@ var options = {
   color: cli.flags.colors != null ? cli.flags.colors : true
 };
 
-Finepack(filedata, options, function(error, output, messages){
+// custom print method
+var print = function() {
+  // var isFinalMessage = false;
+  // var isWarningOrErrorMessage = (this.messages.warning.length !== 0) || (this.messages.error.length !== 0);
+  // var isSuccessOrInfoMessage = function(type) {
+  //   if (isFinalMessage) return false;
+  //   if ((type === 'success') || (type === 'info'))
+  //     return isFinalMessage = true;
+  // };
+  // if (isWarningOrErrorMessage)
+
+  console.log();
+  var _this = this;
+  Object.keys(this.types).forEach(function(type) {
+    // if (isSuccessOrInfoMessage(type)) console.log();
+    _this.messages[type].forEach(function(message) {
+      _this.printLine(type, message);
+    });
+  });
+};
+
+Finepack(filedata, options, function(error, output, messages) {
   var fileoutput = JSON.stringify(output, null, 2) + os.EOL;
-  fs.writeFile(filepath, fileoutput, {encoding: 'utf8'}, function (err) {
-    Logger.print(messages);
+  fs.writeFile(filepath, fileoutput, {encoding: 'utf8'}, function(err) {
+    var logger = new Logger({color: options.color, messages: messages, print: print});
+    logger.print();
     if (error || err) return process.exit(1);
   });
 });

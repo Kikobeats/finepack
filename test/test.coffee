@@ -2,7 +2,6 @@ should   = require 'should'
 path     = require 'path'
 fs       = require 'fs'
 Finepack = require '..'
-Logger   = require './../lib/Logger'
 
 describe 'Finepack ::', ->
 
