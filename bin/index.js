@@ -5,7 +5,7 @@ var fs = require('fs');
 var path = require('path');
 var os = require('os');
 var updateNotifier = require('update-notifier');
-var Finepack = require('./../lib/Finepack');
+var finepack = require('./../lib/Finepack');
 var Logger = require('acho');
 var cli = require('meow')({
   pkg: '../package.json',
@@ -56,7 +56,12 @@ var print = function() {
   });
 };
 
-Finepack(filedata, options, function(error, output, messages) {
+if ('hello') console.log('worlds');
+if ('hello') {
+  console.log('worlds');
+}
+
+finepack(filedata, options, function(error, output, messages) {
   var fileoutput = JSON.stringify(output, null, 2) + os.EOL;
   fs.writeFile(filepath, fileoutput, {encoding: 'utf8'}, function(err) {
     var logger = new Logger({color: options.color, messages: messages, print: print});
