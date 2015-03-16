@@ -56,11 +56,6 @@ var print = function() {
   });
 };
 
-if ('hello') console.log('worlds');
-if ('hello') {
-  console.log('worlds');
-}
-
 finepack(filedata, options, function(error, output, messages) {
   var fileoutput = JSON.stringify(output, null, 2) + os.EOL;
   fs.writeFile(filepath, fileoutput, {encoding: 'utf8'}, function(err) {
