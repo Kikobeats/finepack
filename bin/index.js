@@ -14,12 +14,12 @@ cli = require('meow')({
       'Usage',
       '  $ finepack <fileJSON> [options]',
       '\n  options:',
-      '\t --no-validation disable validation mode.',
+      '\t --no-validate disable validate mode.',
       '\t --no-color\t disable colors in the output.',
       '\t --version\t output the current version.',
       '\n  examples:',
       '\t finepack package.json',
-      '\t finepack bower.json --no-validation'
+      '\t finepack bower.json --no-validate'
   ].join('\n')
 });
 
@@ -32,7 +32,7 @@ var filedata = fs.readFileSync(filepath, {encoding: 'utf8'});
 
 var options = {
   filename: filename,
-  validation: existsDefault((cli.flags.validation), true),
+  validate: existsDefault((cli.flags.validate), true),
   lint: existsDefault((cli.flags.lint), true),
   color: existsDefault((cli.flags.color), true),
 };
@@ -49,10 +49,16 @@ var print = function() {
 };
 
 finepack(filedata, options, function(error, output, messages) {
+  var logger = new Logger({color: options.color, messages: messages, print: print});
+  if(error) {
+    logger.print();
+    logger.error(output);
+    return process.exit(1);
+  }
   var fileoutput = JSON.stringify(output, null, 2) + os.EOL;
   fs.writeFile(filepath, fileoutput, {encoding: 'utf8'}, function(err) {
+    if (err) throw err;
     var logger = new Logger({color: options.color, messages: messages, print: print});
     logger.print();
-    if (error || err) return process.exit(1);
   });
 });

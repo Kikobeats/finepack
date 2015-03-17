@@ -14,6 +14,7 @@ describe 'Finepack ::', ->
     @fileRequiredBackup = path.resolve 'test/fixtures/pkg_required_backup.json'
     @fileFixed = path.resolve 'test/fixtures/pkg_fixed.json'
     @fileFixedBackup = path.resolve 'test/fixtures/pkg_fixed_backup.json'
+    @fileMalformed = path.resolve 'test/fixtures/pkg_malformed.json'
 
   beforeEach ->
     file = fs.readFileSync(@fileNormalBackup, encoding: 'utf8')
@@ -28,45 +29,57 @@ describe 'Finepack ::', ->
     file = fs.readFileSync(@fileFixedBackup, encoding: 'utf8')
     fs.writeFileSync(@fileFixed, file, encoding: 'utf8')
 
-  it "doesn't validate by default", (done)  ->
-    data = fs.readFileSync @fileNormal, {encoding: 'utf8'}
-    options = filename: 'pkg.json'
+  describe 'Lint ::', ->
+    it 'lint a malformed file', (done) ->
+      data = fs.readFileSync @fileMalformed, {encoding: 'utf8'}
+      options = filename: 'pkg.json'
 
-    Finepack data, options, (err, output, messages) ->
-      (err?).should.eql.false
-      (messages.warning[0]?).should.be.equal false
-      (messages.success[0]?).should.be.equal true
-      (typeof output is 'object').should.be.equal true
-      done()
+      Finepack data, options, (err, output, messages) ->
+        (err?).should.be.equal true
+        (typeof output is 'object').should.be.equal true
+        (messages.error[0]?).should.be.equal true
+        done()
 
-  it 'Lint a file without important required keys', (done) ->
-    data = fs.readFileSync @fileRequired, {encoding: 'utf8'}
-    options = filename: 'pkg.json', validate: true
+  describe 'Validate ::', ->
+    it "doesn't validate by default", (done)  ->
+      data = fs.readFileSync @fileNormal, {encoding: 'utf8'}
+      options = filename: 'pkg.json'
 
-    Finepack data, options, (err, output, messages) ->
-      (err?).should.be.equal true
-      (messages.error[0]?).should.be.equal true
-      (messages.info[0]?).should.be.equal true
-      (typeof output is 'object').should.be.equal true
-      done()
+      Finepack data, options, (err, output, messages) ->
+        (err?).should.eql.false
+        (messages.warning[0]?).should.be.equal false
+        (messages.success[0]?).should.be.equal true
+        (typeof output is 'object').should.be.equal true
+        done()
 
-  it 'Lint file without recommended keys', (done) ->
-    data = fs.readFileSync @fileMissing, {encoding: 'utf8'}
-    options = filename: 'pkg.json', validate: true
+    it 'Validate a file without important required keys', (done) ->
+      data = fs.readFileSync @fileRequired, {encoding: 'utf8'}
+      options = filename: 'pkg.json', validate: true
 
-    Finepack data, options, (err, output, messages) ->
-      (err?).should.be.equal true
-      (messages.warning[0]?).should.be.equal true
-      (messages.info[0]?).should.be.equal true
-      (typeof output is 'object').should.be.equal true
-      done()
+      Finepack data, options, (err, output, messages) ->
+        (err?).should.be.equal false
+        (messages.error[0]?).should.be.equal true
+        (messages.info[0]?).should.be.equal true
+        (typeof output is 'object').should.be.equal true
+        done()
 
-  it 'Lint a file that is already linted', (done) ->
-    data = fs.readFileSync @fileNormal, {encoding: 'utf8'}
-    options = filename: 'pkg.json', validate: true
+    it 'Validate file without recommended keys', (done) ->
+      data = fs.readFileSync @fileMissing, {encoding: 'utf8'}
+      options = filename: 'pkg.json', validate: true
 
-    Finepack data, options, (err, output, messages) ->
-      (err?).should.be.equal true
-      (messages.info[0]?).should.be.equal true
-      (typeof output is 'object').should.be.equal true
-      done()
+      Finepack data, options, (err, output, messages) ->
+        (err?).should.be.equal false
+        (messages.warning[0]?).should.be.equal true
+        (messages.info[0]?).should.be.equal true
+        (typeof output is 'object').should.be.equal true
+        done()
+
+    it 'Validate a file that is already validated', (done) ->
+      data = fs.readFileSync @fileNormal, {encoding: 'utf8'}
+      options = filename: 'pkg.json', validate: true
+
+      Finepack data, options, (err, output, messages) ->
+        (err?).should.be.equal false
+        (messages.info[0]?).should.be.equal true
+        (typeof output is 'object').should.be.equal true
+        done()

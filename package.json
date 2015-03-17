@@ -15,7 +15,8 @@
     "acho": "*",
     "chalk": "*",
     "coffee-script": "*",
-    "existential-default": "^1.0.0",
+    "existential-default": "*",
+    "jsonlint": "*",
     "meow": "*",
     "sort-keys-recursive": "*",
     "update-notifier": "*"

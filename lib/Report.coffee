@@ -1,61 +1,66 @@
 'use strict'
 
-Logger  = require 'acho'
-chalk   = require 'chalk'
-keys    = require './Keywords'
-DEFAULT = require './Default'
+Logger   = require 'acho'
+chalk    = require 'chalk'
+jsonlint = require 'jsonlint'
+keys     = require './Keywords'
+DEFAULT  = require './Default'
 
 module.exports = class Report
 
-  constructor: (@filename='Your file', @isColorizable=false) ->
+  constructor: (@name = 'Your file', @isColorizable = false, @isValidationEnable = false) ->
     @logger = new Logger @isColorizable
 
-  validate: (file) ->
-    required : @_validateRequiredFields file
-    missing  : @_validateMissingFields file
+  lint: (objt) ->
+    objt = JSON.stringify(objt) if typeof objt isnt 'string'
+    jsonlint.parse objt
 
-  resume: (file, options) ->
-    validate: if options.validate then @validate file else DEFAULT.validate
+  validate: (objt, isValidationEnable) ->
+    return DEFAULT.validate unless @isValidationEnable
+    required : @_validateRequiredKeys objt
+    missing  : @_validateMissingKeys objt
+
+  errorMessage: (cb, data) ->
+    message = @_messageBuilder "Something in #{@name} is wrong. See below."
+    @logger.push 'error', message
+    cb true, data, @logger.messages
 
   successMessage: (cb, data) ->
-    message = "#{@filename} is now fine."
-    message = @_corolizeMessage message if @isColorizable
+    message = @_messageBuilder "#{@name} is now fine."
     @logger.push 'success', message
     cb null, data, @logger.messages
 
   requiredMessage: (cb, data) ->
-    message = "#{@filename} isn't fine. Check the file and run again."
-    message = @_corolizeMessage message if @isColorizable
-    @logger.push 'info', message
-    cb true, data, @logger.messages
-
-  missingMessage: (cb, data) ->
-    message = "#{@filename} is almost fine. Check the file and run again."
-    message = @_corolizeMessage message if @isColorizable
-    @logger.push 'info', message
-    cb true, data, @logger.messages
-
-  alreadyMessage: (cb, data) ->
-    message = "#{@filename} is already fine."
-    message = @_corolizeMessage message if @isColorizable
+    message = @_messageBuilder "#{@name} isn't fine. Check the file and run again."
     @logger.push 'info', message
     cb null, data, @logger.messages
 
-  _corolizeMessage: (message) ->
-    message = message.replace @filename, chalk.bold @filename
+  missingMessage: (cb, data) ->
+    message = @_messageBuilder "#{@name} is almost fine. Check the file and run again."
+    @logger.push 'info', message
+    cb null, data, @logger.messages
+
+  alreadyMessage: (cb, data) ->
+    message = @_messageBuilder "#{@name} is already fine."
+    @logger.push 'info', message
+    cb null, data, @logger.messages
+
+  _messageBuilder: (message) ->
+    return message unless @isColorizable
+    message = message.replace @name, chalk.bold @name
     message = message.replace 'fine', chalk.bold 'fine'
     message
 
-  _validateRequiredFields : (file) ->
+  _validateRequiredKeys : (objt) ->
     haveRequiredValues = false
-    for key in keys.required when not file[key]?
+    for key in keys.required when not objt[key]?
       @logger.push 'error', "required '#{key}'."
       haveRequiredValues = true unless haveRequiredValues
     haveRequiredValues
 
-  _validateMissingFields : (file) ->
+  _validateMissingKeys : (objt) ->
     haveMissingValues = false
-    for key in keys.missing when not file[key]?
+    for key in keys.missing when not objt[key]?
       @logger.push 'warning', "missing '#{key}'."
       haveMissingValues = true unless haveMissingValues
     haveMissingValues
