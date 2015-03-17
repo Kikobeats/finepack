@@ -35,9 +35,9 @@ $ finepack
     $ finepack <fileJSON> [options]
 
     options:
-     --no-lint    disable lint mode.
-     --no-colors  disable colors in the output.
-     --version    output the current version.
+     --no-validation disable validation mode.
+     --no-color      disable colors in the output.
+     --version       output the current version.
 
     examples:
      finepack package.json
