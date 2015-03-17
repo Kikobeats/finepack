@@ -1,34 +1,21 @@
 'use strict'
 
-chalk  = require 'chalk'
-Logger = require 'acho'
-keys   = require './Keywords'
+Logger  = require 'acho'
+chalk   = require 'chalk'
+keys    = require './Keywords'
+DEFAULT = require './Default'
 
 module.exports = class Report
 
   constructor: (@filename='Your file', @isColorizable=false) ->
     @logger = new Logger @isColorizable
 
-  @default:
-    haveRequiredErrors: false, haveMissingErrors: false
+  validate: (file) ->
+    required : @_validateRequiredFields file
+    missing  : @_validateMissingFields file
 
-  required : (file) ->
-    haveRequiredValues = false
-    for key in keys.required when not file[key]?
-      @logger.push 'error', "required '#{key}'."
-      haveRequiredValues = true unless haveRequiredValues
-    haveRequiredValues
-
-  missing : (file) ->
-    haveMissingValues = false
-    for key in keys.missing when not file[key]?
-      @logger.push 'warning', "missing '#{key}'."
-      haveMissingValues = true unless haveMissingValues
-    haveMissingValues
-
-  resume: (file) ->
-    haveRequiredErrors : @required file
-    haveMissingErrors  : @missing  file
+  resume: (file, options) ->
+    validate: if options.validate then @validate file else DEFAULT.validate
 
   successMessage: (cb, data) ->
     message = "#{@filename} is now fine."
@@ -58,3 +45,17 @@ module.exports = class Report
     message = message.replace @filename, chalk.bold @filename
     message = message.replace 'fine', chalk.bold 'fine'
     message
+
+  _validateRequiredFields : (file) ->
+    haveRequiredValues = false
+    for key in keys.required when not file[key]?
+      @logger.push 'error', "required '#{key}'."
+      haveRequiredValues = true unless haveRequiredValues
+    haveRequiredValues
+
+  _validateMissingFields : (file) ->
+    haveMissingValues = false
+    for key in keys.missing when not file[key]?
+      @logger.push 'warning', "missing '#{key}'."
+      haveMissingValues = true unless haveMissingValues
+    haveMissingValues

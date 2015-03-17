@@ -15,6 +15,7 @@
     "acho": "*",
     "chalk": "*",
     "coffee-script": "*",
+    "existential-default": "^1.0.0",
     "meow": "*",
     "sort-keys-recursive": "*",
     "update-notifier": "*"

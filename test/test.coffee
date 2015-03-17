@@ -28,7 +28,6 @@ describe 'Finepack ::', ->
     file = fs.readFileSync(@fileFixedBackup, encoding: 'utf8')
     fs.writeFileSync(@fileFixed, file, encoding: 'utf8')
 
-
   it "doesn't validate by default", (done)  ->
     data = fs.readFileSync @fileNormal, {encoding: 'utf8'}
     options = filename: 'pkg.json'
@@ -42,7 +41,7 @@ describe 'Finepack ::', ->
 
   it 'Lint a file without important required keys', (done) ->
     data = fs.readFileSync @fileRequired, {encoding: 'utf8'}
-    options = filename: 'pkg.json', lint: true
+    options = filename: 'pkg.json', validate: true
 
     Finepack data, options, (err, output, messages) ->
       (err?).should.be.equal true
@@ -53,7 +52,7 @@ describe 'Finepack ::', ->
 
   it 'Lint file without recommended keys', (done) ->
     data = fs.readFileSync @fileMissing, {encoding: 'utf8'}
-    options = filename: 'pkg.json', lint: true
+    options = filename: 'pkg.json', validate: true
 
     Finepack data, options, (err, output, messages) ->
       (err?).should.be.equal true
@@ -64,7 +63,7 @@ describe 'Finepack ::', ->
 
   it 'Lint a file that is already linted', (done) ->
     data = fs.readFileSync @fileNormal, {encoding: 'utf8'}
-    options = filename: 'pkg.json', lint: true
+    options = filename: 'pkg.json', validate: true
 
     Finepack data, options, (err, output, messages) ->
       (err?).should.be.equal true

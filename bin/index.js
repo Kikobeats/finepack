@@ -1,24 +1,25 @@
 #!/usr/bin/env node
 'use strict';
 require('coffee-script').register();
-var fs = require('fs');
-var path = require('path');
-var os = require('os');
-var updateNotifier = require('update-notifier');
-var finepack = require('./../lib/Finepack');
-var Logger = require('acho');
-var cli = require('meow')({
+var fs = require('fs'),
+path = require('path'),
+existsDefault = require('existential-default'),
+os = require('os'),
+updateNotifier = require('update-notifier'),
+finepack = require('./../lib/Finepack'),
+Logger = require('acho'),
+cli = require('meow')({
   pkg: '../package.json',
   help: [
       'Usage',
       '  $ finepack <fileJSON> [options]',
       '\n  options:',
-      '\t --no-lint\t disable lint mode.',
-      '\t --no-colors\t disable colors in the output.',
+      '\t --no-validation disable validation mode.',
+      '\t --no-color\t disable colors in the output.',
       '\t --version\t output the current version.',
       '\n  examples:',
       '\t finepack package.json',
-      '\t finepack bower.json --no-lint'
+      '\t finepack bower.json --no-validation'
   ].join('\n')
 });
 
@@ -31,25 +32,16 @@ var filedata = fs.readFileSync(filepath, {encoding: 'utf8'});
 
 var options = {
   filename: filename,
-  lint: cli.flags.lint != null ? cli.flags.lint : true,
-  color: cli.flags.colors != null ? cli.flags.colors : true
+  validation: existsDefault((cli.flags.validation), true),
+  lint: existsDefault((cli.flags.lint), true),
+  color: existsDefault((cli.flags.color), true),
 };
 
-// custom print method
+// custom print method for acho
 var print = function() {
-  // var isFinalMessage = false;
-  // var isWarningOrErrorMessage = (this.messages.warning.length !== 0) || (this.messages.error.length !== 0);
-  // var isSuccessOrInfoMessage = function(type) {
-  //   if (isFinalMessage) return false;
-  //   if ((type === 'success') || (type === 'info'))
-  //     return isFinalMessage = true;
-  // };
-  // if (isWarningOrErrorMessage)
-
   console.log();
   var _this = this;
   Object.keys(this.types).forEach(function(type) {
-    // if (isSuccessOrInfoMessage(type)) console.log();
     _this.messages[type].forEach(function(message) {
       _this.printLine(type, message);
     });
