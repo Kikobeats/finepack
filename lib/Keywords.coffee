@@ -15,9 +15,21 @@ module.exports =
 
   important: [
     'name'
-    'description'
     'version'
+    'description'
     'author'
+    'contributors'
+    'bin'
+    'scripts'
+    'main'
+    'repository'
+    'bugs'
+    'keywords'
+    'dependencies'
+    'devDependencies'
+    'preferGlobal'
+    'private'
+    'license'
   ]
 
   required: [
