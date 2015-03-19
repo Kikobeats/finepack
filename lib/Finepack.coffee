@@ -4,9 +4,7 @@ Report            = require './Report'
 Keywords          = require './Keywords'
 recursiveSortKeys = require 'sort-keys-recursive'
 existsDefault     = require 'existential-default'
-
-isEquivalent = (objt1, objt2) ->
-  JSON.stringify(objt1, null, 2) is JSON.stringify(objt2, null, 2)
+JsonIsEqual       = require 'json-is-equal'
 
 ###
   @description Organize the keys of JSON file.
@@ -41,5 +39,5 @@ module.exports = (data, options = {}, cb) ->
   output[key] = value for key, value of input
 
   return report.missingMessage(cb, output) if validation.missing
-  return report.alreadyMessage(cb, output) if isEquivalent data, output
+  return report.alreadyMessage(cb, output) if JsonIsEqual data, output
   report.successMessage(cb, output)

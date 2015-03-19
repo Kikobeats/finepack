@@ -1,17 +1,15 @@
 {
   "name": "finepack",
-  "version": "2.1.5",
   "description": "Organizes and maintains readable your JSON files",
+  "homepage": "https://github.com/Kikobeats/finepack",
+  "version": "2.1.5",
+  "main": "./index.js",
+  "bin": "./bin/index.js",
   "author": {
     "name": "Kiko Beats",
     "email": "josefrancisco.verdu@gmail.com",
     "url": "https://github.com/Kikobeats"
   },
-  "bin": "./bin/index.js",
-  "scripts": {
-    "test": "sh test/test.sh"
-  },
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/Kikobeats/finepack"
@@ -39,7 +37,9 @@
     "mocha": "*",
     "should": "*"
   },
+  "scripts": {
+    "test": "sh test/test.sh"
+  },
   "preferGlobal": true,
-  "license": "MIT",
-  "homepage": "https://github.com/Kikobeats/finepack"
+  "license": "MIT"
 }

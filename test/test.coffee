@@ -15,6 +15,7 @@ describe 'Finepack ::', ->
     @fileFixed = path.resolve 'test/fixtures/pkg_fixed.json'
     @fileFixedBackup = path.resolve 'test/fixtures/pkg_fixed_backup.json'
     @fileMalformed = path.resolve 'test/fixtures/pkg_malformed.json'
+    @fileAlready = path.resolve 'test/fixtures/pkg_already_fine.json'
 
   beforeEach ->
     file = fs.readFileSync(@fileNormalBackup, encoding: 'utf8')
@@ -75,11 +76,11 @@ describe 'Finepack ::', ->
         done()
 
     it 'Validate a file that is already validated', (done) ->
-      data = fs.readFileSync @fileNormal, {encoding: 'utf8'}
+      data = fs.readFileSync @fileAlready, {encoding: 'utf8'}
       options = filename: 'pkg.json', validate: true
 
       Finepack data, options, (err, output, messages) ->
         (err?).should.be.equal false
-        (messages.info[0]?).should.be.equal true
+        (messages.info[0]).should.be.equal 'pkg.json is already fine.'
         (typeof output is 'object').should.be.equal true
         done()

@@ -3,7 +3,6 @@
 module.exports =
 
   missing: [
-    'author'
     'bugs'
     'description'
     'keywords'
@@ -15,18 +14,23 @@ module.exports =
 
   important: [
     'name'
-    'version'
     'description'
-    'author'
-    'contributors'
-    'bin'
-    'scripts'
+    'homepage'
+    'version'
     'main'
+    'bin'
+    'author'
+    'authors'
+    'contributors'
     'repository'
     'bugs'
     'keywords'
     'dependencies'
     'devDependencies'
+    'engines'
+    'files'
+    'ignore'
+    'scripts'
     'preferGlobal'
     'private'
     'license'
