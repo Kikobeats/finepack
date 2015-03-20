@@ -28,6 +28,7 @@
     "chalk": "*",
     "coffee-script": "*",
     "existential-default": "*",
+    "json-is-equal": "*",
     "jsonlint": "*",
     "meow": "*",
     "sort-keys-recursive": "*",
