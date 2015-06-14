@@ -48,7 +48,7 @@ describe 'Finepack ::', ->
 
       Finepack data, options, (err, output, messages) ->
         (err?).should.eql.false
-        (messages.warning[0]?).should.be.equal false
+        (messages.warn[0]?).should.be.equal false
         (messages.success[0]?).should.be.equal true
         (typeof output is 'object').should.be.equal true
         done()
@@ -70,7 +70,7 @@ describe 'Finepack ::', ->
 
       Finepack data, options, (err, output, messages) ->
         (err?).should.be.equal false
-        (messages.warning[0]?).should.be.equal true
+        (messages.warn[0]?).should.be.equal true
         (messages.info[0]?).should.be.equal true
         (typeof output is 'object').should.be.equal true
         done()
