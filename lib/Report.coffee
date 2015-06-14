@@ -61,6 +61,6 @@ module.exports = class Report
   _validateMissingKeys : (objt) ->
     haveMissingValues = false
     for key in keys.missing when not objt[key]?
-      @logger.push 'warning', "missing '#{key}'."
+      @logger.push 'warn', "missing '#{key}'."
       haveMissingValues = true unless haveMissingValues
     haveMissingValues

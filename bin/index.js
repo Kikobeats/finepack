@@ -34,7 +34,7 @@ var options = {
   filename: filename,
   validate: existsDefault((cli.flags.validate), true),
   lint: existsDefault((cli.flags.lint), true),
-  color: existsDefault((cli.flags.color), true),
+  color: existsDefault((cli.flags.color), true)
 };
 
 // custom print method for acho
@@ -50,11 +50,13 @@ var print = function() {
 
 finepack(filedata, options, function(error, output, messages) {
   var logger = new Logger({color: options.color, messages: messages, print: print});
-  if(error) {
+
+  if (error) {
     logger.print();
     logger.error(output);
     return process.exit(1);
   }
+
   var fileoutput = JSON.stringify(output, null, 2) + os.EOL;
   fs.writeFile(filepath, fileoutput, {encoding: 'utf8'}, function(err) {
     if (err) throw err;

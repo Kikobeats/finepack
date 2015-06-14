@@ -1,10 +1,11 @@
 'use strict'
 
 Report            = require './Report'
+typeOf            = require 'fn-typeof'
 Keywords          = require './Keywords'
-recursiveSortKeys = require 'sort-keys-recursive'
+JSONisEqual       = require 'json-is-equal'
 existsDefault     = require 'existential-default'
-JsonIsEqual       = require 'json-is-equal'
+sort              = require 'sort-keys-recursive'
 
 ###
   @description Organize the keys of JSON file.
@@ -31,13 +32,12 @@ module.exports = (data, options = {}, cb) ->
   validation = report.validate input
   return report.requiredMessage(cb, input) if validation.required
 
+  input = sort input
   for key in Keywords.important when input[key]?
     output[key] = input[key]
     delete input[key]
-
-  input = recursiveSortKeys input
   output[key] = value for key, value of input
 
   return report.missingMessage(cb, output) if validation.missing
-  return report.alreadyMessage(cb, output) if JsonIsEqual data, output
+  return report.alreadyMessage(cb, output) if JSONisEqual data, output
   report.successMessage(cb, output)
