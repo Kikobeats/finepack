@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 'use strict';
 require('coffee-script').register();
-var fs = require('fs'),
-path = require('path'),
-existsDefault = require('existential-default'),
-os = require('os'),
-updateNotifier = require('update-notifier'),
-finepack = require('./../lib/Finepack'),
-Logger = require('acho'),
-cli = require('meow')({
+var fs             = require('fs');
+var os             = require('os');
+var path           = require('path');
+var Logger         = require('acho');
+var updateNotifier = require('update-notifier');
+var finepack       = require('./../lib/Finepack');
+var existsDefault  = require('existential-default');
+var cli            = require('meow')({
   pkg: '../package.json',
   help: [
       'Usage',
@@ -24,6 +24,7 @@ cli = require('meow')({
 });
 
 updateNotifier({pkg: cli.pkg}).notify();
+
 if (cli.input.length === 0) cli.showHelp();
 
 var filepath = path.resolve(cli.input[0]);

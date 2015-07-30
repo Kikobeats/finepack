@@ -28,7 +28,7 @@
     "chalk": "*",
     "coffee-script": "*",
     "existential-default": "*",
-    "fn-typeof": "~1.0.0",
+    "fn-typeof": "*",
     "json-is-equal": "*",
     "jsonlint": "*",
     "meow": "*",
