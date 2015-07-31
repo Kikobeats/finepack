@@ -1,10 +1,11 @@
 # finepack
 
-[![Build Status](http://img.shields.io/travis/Kikobeats/finepack/master.svg?style=flat)](https://travis-ci.org/Kikobeats/finepack)
-[![Dependency status](http://img.shields.io/david/Kikobeats/finepack.svg?style=flat)](https://david-dm.org/Kikobeats/finepack)
-[![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/finepack.svg?style=flat)](https://david-dm.org/Kikobeats/finepack#info=devDependencies)
-[![NPM Status](http://img.shields.io/npm/dm/finepack.svg?style=flat)](https://www.npmjs.org/package/finepack)
-[![Gittip](http://img.shields.io/gittip/Kikobeats.svg?style=flat)](https://www.gittip.com/Kikobeats/)
+![Last version](https://img.shields.io/github/tag/Kikobeats/finepack.svg?style=flat-square)
+[![Build Status](http://img.shields.io/travis/Kikobeats/finepack/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/finepack)
+[![Dependency status](http://img.shields.io/david/Kikobeats/finepack.svg?style=flat-square)](https://david-dm.org/Kikobeats/finepack)
+[![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/finepack.svg?style=flat-square)](https://david-dm.org/Kikobeats/finepack#info=devDependencies)
+[![NPM Status](http://img.shields.io/npm/dm/finepack.svg?style=flat-square)](https://www.npmjs.org/package/finepack)
+[![Gittip](http://img.shields.io/gittip/Kikobeats.svg?style=flat-square)](https://www.gittip.com/Kikobeats/)
 
 > Organizes and maintains readable your JSON files.
 
