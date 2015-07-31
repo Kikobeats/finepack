@@ -29,7 +29,6 @@ if (cli.input.length === 0) cli.showHelp();
 
 var filepath = path.resolve(cli.input[0]);
 var filename = path.basename(filepath);
-var filedata = fs.readFileSync(filepath, {encoding: 'utf8'});
 
 var options = {
   filename: filename,
@@ -38,30 +37,30 @@ var options = {
   color: existsDefault((cli.flags.color), true)
 };
 
-// custom print method for acho
-var print = function() {
-  console.log();
-  var _this = this;
-  Object.keys(this.types).forEach(function(type) {
-    _this.messages[type].forEach(function(message) {
-      _this.printLine(type, message);
-    });
-  });
+var stringify = function(data) {
+  return JSON.stringify(data, null, 2) + os.EOL;
 };
 
-finepack(filedata, options, function(error, output, messages) {
-  var logger = new Logger({color: options.color, messages: messages, print: print});
+fs.readFile(filepath, {encoding: 'utf8'}, function(err, filedata) {
+  if (err) throw err;
 
-  if (error) {
-    logger.print();
-    logger.error(output);
-    return process.exit(1);
-  }
+  finepack(filedata, options, function(error, output, messages) {
+    var logger = new Logger({
+      color: options.color,
+      messages: messages
+    });
 
-  var fileoutput = JSON.stringify(output, null, 2) + os.EOL;
-  fs.writeFile(filepath, fileoutput, {encoding: 'utf8'}, function(err) {
-    if (err) throw err;
-    var logger = new Logger({color: options.color, messages: messages, print: print});
-    logger.print();
+    if (error) {
+      logger.print();
+      logger.error(output);
+      return process.exit(1);
+    }
+
+    output = stringify(output);
+    fs.writeFile(filepath, output, {encoding: 'utf8'}, function(err) {
+      if (err) throw err;
+      console.log();
+      logger.print();
+    });
   });
 });
