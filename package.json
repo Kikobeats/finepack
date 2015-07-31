@@ -2,7 +2,7 @@
   "name": "finepack",
   "description": "Organizes and maintains readable your JSON files",
   "homepage": "https://github.com/Kikobeats/finepack",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "main": "./index.js",
   "bin": "./bin/index.js",
   "author": {
