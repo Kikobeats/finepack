@@ -66,7 +66,7 @@ var options = {
 
 finepack(filedata, options, function(err, output, messages){
   if (err){
-    // if your JSON is malformed then you have err
+    // if your JSON is malformed then you have an err
   }
 });
 ```
