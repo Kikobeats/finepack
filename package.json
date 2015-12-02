@@ -27,8 +27,6 @@
     "acho": "*",
     "chalk": "*",
     "coffee-script": "*",
-    "existential-default": "*",
-    "fn-typeof": "*",
     "json-is-equal": "*",
     "jsonlint": "*",
     "meow": "*",

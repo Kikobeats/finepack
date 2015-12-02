@@ -1,11 +1,9 @@
 'use strict'
 
-Report            = require './Report'
-typeOf            = require 'fn-typeof'
-Keywords          = require './Keywords'
-JSONisEqual       = require 'json-is-equal'
-existsDefault     = require 'existential-default'
-sort              = require 'sort-keys-recursive'
+Report        = require './Report'
+Keywords      = require './Keywords'
+JSONisEqual   = require 'json-is-equal'
+sort          = require 'sort-keys-recursive'
 
 ###
   @description Organize the keys of JSON file.
