@@ -1,7 +1,18 @@
+<a name="2.1.11"></a>
+## 2.1.11 (2015-12-02)
+
+
+* deleted unnecesary files ([b9e38c6](https://github.com/Kikobeats/finepack/commit/b9e38c6))
+* removed unnecessary dependencies ([08428a5](https://github.com/Kikobeats/finepack/commit/08428a5))
+* updated bumped settings ([dd14b45](https://github.com/Kikobeats/finepack/commit/dd14b45))
+
+
+
 <a name="2.1.10"></a>
 ## 2.1.10 (2015-10-12)
 
 
+* 2.1.10 releases ([d254090](https://github.com/Kikobeats/finepack/commit/d254090))
 * Update README.md ([798da8b](https://github.com/Kikobeats/finepack/commit/798da8b))
 * updated dependency ([403311f](https://github.com/Kikobeats/finepack/commit/403311f))
 
