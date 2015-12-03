@@ -1,15 +1,15 @@
 'use strict'
 
-Logger   = require 'acho'
+Acho     = require 'acho'
 chalk    = require 'chalk'
 jsonlint = require 'jsonlint'
-keys     = require './Keywords'
 DEFAULT  = require './Default'
+keys     = require './Keywords'
 
 module.exports = class Report
 
   constructor: (@name = 'Your file', @isColorizable = false, @isValidationEnable = false) ->
-    @logger = new Logger @isColorizable
+    @logger = Acho color: @isColorizable
 
   lint: (objt) ->
     objt = JSON.stringify(objt) if typeof objt isnt 'string'
