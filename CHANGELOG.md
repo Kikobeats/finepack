@@ -1,7 +1,16 @@
+<a name="2.1.12"></a>
+## 2.1.12 (2015-12-05)
+
+
+* updated acho interface ([481a5f6](https://github.com/Kikobeats/finepack/commit/481a5f6))
+
+
+
 <a name="2.1.11"></a>
 ## 2.1.11 (2015-12-02)
 
 
+* 2.1.11 releases ([a7107ef](https://github.com/Kikobeats/finepack/commit/a7107ef))
 * deleted unnecesary files ([b9e38c6](https://github.com/Kikobeats/finepack/commit/b9e38c6))
 * removed unnecessary dependencies ([08428a5](https://github.com/Kikobeats/finepack/commit/08428a5))
 * updated bumped settings ([dd14b45](https://github.com/Kikobeats/finepack/commit/dd14b45))
