@@ -24,18 +24,19 @@
     "tool"
   ],
   "dependencies": {
-    "acho": "*",
-    "chalk": "*",
-    "coffee-script": "*",
-    "json-is-equal": "*",
-    "jsonlint": "*",
-    "meow": "*",
-    "sort-keys-recursive": "*",
-    "update-notifier": "*"
+    "acho": "latest",
+    "chalk": "latest",
+    "coffee-script": "latest",
+    "existential-default": "latest",
+    "json-is-equal": "latest",
+    "jsonlint": "latest",
+    "meow": "latest",
+    "sort-keys-recursive": "latest",
+    "update-notifier": "latest"
   },
   "devDependencies": {
-    "mocha": "*",
-    "should": "*"
+    "mocha": "latest",
+    "should": "latest"
   },
   "scripts": {
     "test": "sh test/test.sh"
