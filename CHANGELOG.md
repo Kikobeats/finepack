@@ -1,7 +1,18 @@
+<a name="2.1.13"></a>
+## 2.1.13 (2015-12-08)
+
+
+* added missing dependency and adjust version ([2373562](https://github.com/Kikobeats/finepack/commit/2373562))
+* standard rulz ✌️ ([ff265eb](https://github.com/Kikobeats/finepack/commit/ff265eb))
+* updated node builds ([09ac28d](https://github.com/Kikobeats/finepack/commit/09ac28d))
+
+
+
 <a name="2.1.12"></a>
 ## 2.1.12 (2015-12-05)
 
 
+* 2.1.12 releases ([248a56e](https://github.com/Kikobeats/finepack/commit/248a56e))
 * updated acho interface ([481a5f6](https://github.com/Kikobeats/finepack/commit/481a5f6))
 
 
