@@ -4,10 +4,12 @@
   "homepage": "https://github.com/Kikobeats/fishpack",
   "version": "1.0.0",
   "main": "fishpack.js",
-  "bin": "./bin/fishpack",
+  "bin": {
+    "fishpack": "./bin/fishpack"
+  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Kikobeats/fishpack"
+    "url": "git://github.com/Kikobeats/fishpack.git"
   },
   "bugs": {
     "url": "https://github.com/Kikobeats/fishpack/issues"
