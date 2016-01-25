@@ -4,6 +4,15 @@ Report        = require './Report'
 Keywords      = require './Keywords'
 JSONisEqual   = require 'json-is-equal'
 sort          = require 'sort-keys-recursive'
+normalizeData = require 'normalize-package-data'
+
+normalize = (json) ->
+  STRICT_MODE = true
+  EXCLUDE_FIELDS = ['readme', '_id']
+
+  normalizeData json, STRICT_MODE
+  delete json[field] for field in EXCLUDE_FIELDS
+  json
 
 ###
   @description Organize the keys of JSON file.
@@ -35,6 +44,8 @@ module.exports = (data, options = {}, cb) ->
     output[key] = input[key]
     delete input[key]
   output[key] = value for key, value of input
+
+  output = normalize output
 
   return report.missingMessage(cb, output) if validation.missing
   return report.alreadyMessage(cb, output) if JSONisEqual data, output
