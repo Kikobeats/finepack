@@ -1,7 +1,19 @@
+<a name="2.2.0"></a>
+# 2.2.0 (2016-01-25)
+
+
+* Fix test ([cf2b49b](https://github.com/Kikobeats/finepack/commit/cf2b49b))
+* Normalize and lock dependencies ([56f0691](https://github.com/Kikobeats/finepack/commit/56f0691))
+* Setup logger correctly ([2eabf6f](https://github.com/Kikobeats/finepack/commit/2eabf6f))
+* Update bumped build ([8cdb50c](https://github.com/Kikobeats/finepack/commit/8cdb50c))
+
+
+
 <a name="2.1.13"></a>
 ## 2.1.13 (2015-12-08)
 
 
+* 2.1.13 releases ([7c6777b](https://github.com/Kikobeats/finepack/commit/7c6777b))
 * added missing dependency and adjust version ([2373562](https://github.com/Kikobeats/finepack/commit/2373562))
 * standard rulz ✌️ ([ff265eb](https://github.com/Kikobeats/finepack/commit/ff265eb))
 * updated node builds ([09ac28d](https://github.com/Kikobeats/finepack/commit/09ac28d))
