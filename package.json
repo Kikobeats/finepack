@@ -38,6 +38,7 @@
     "update-notifier": "~0.6.0"
   },
   "devDependencies": {
+    "git-dirty": "latest",
     "mocha": "latest",
     "should": "latest"
   },
