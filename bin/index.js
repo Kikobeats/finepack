@@ -47,7 +47,7 @@ fs.readFile(filepath, {encoding: 'utf8'}, function (err, filedata) {
   finepack(filedata, options, function (error, output, messages) {
     var logger = new Logger({
       align: false,
-      keyword: pkg.name,
+      keyword: 'symbol',
       color: options.color,
       messages: messages
     })
