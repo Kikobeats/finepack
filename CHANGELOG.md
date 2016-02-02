@@ -1,3 +1,11 @@
+<a name="2.2.2"></a>
+## 2.2.2 (2016-02-02)
+
+
+* update deps ([82741e9](https://github.com/Kikobeats/finepack/commit/82741e9))
+
+
+
 <a name="2.2.1"></a>
 ## 2.2.1 (2016-01-26)
 
@@ -7,6 +15,7 @@
 * chore(package): update acho to version 2.5.1 ([fc742a9](https://github.com/Kikobeats/finepack/commit/fc742a9))
 
 * Merge pull request #16 from Kikobeats/greenkeeper-acho-2.5.1 ([18c6f1f](https://github.com/Kikobeats/finepack/commit/18c6f1f))
+* Release 2.2.1 ([27929d6](https://github.com/Kikobeats/finepack/commit/27929d6))
 * Using logger symbols ([65eeb24](https://github.com/Kikobeats/finepack/commit/65eeb24))
 
 
@@ -146,9 +155,9 @@
 ## 2.1.1 (2015-03-14)
 
 
-* Update README.md ([5862f68](https://github.com/Kikobeats/finepack/commit/5862f68))
 * added acho as dependency ([3944ba0](https://github.com/Kikobeats/finepack/commit/3944ba0))
 * added acho dependency ([98704ed](https://github.com/Kikobeats/finepack/commit/98704ed))
+* Update README.md ([5862f68](https://github.com/Kikobeats/finepack/commit/5862f68))
 * updated ([d4a86b1](https://github.com/Kikobeats/finepack/commit/d4a86b1))
 * updated and fixed CLI usage ([e085418](https://github.com/Kikobeats/finepack/commit/e085418))
 
@@ -182,10 +191,10 @@
 
 
 * 2.0.1 releases ([9c06a70](https://github.com/Kikobeats/finepack/commit/9c06a70))
-* Update README.md ([5dc7090](https://github.com/Kikobeats/finepack/commit/5dc7090))
-* Update README.md ([6af5d5a](https://github.com/Kikobeats/finepack/commit/6af5d5a))
 * improve data transformation ([0b8c543](https://github.com/Kikobeats/finepack/commit/0b8c543))
 * merged ([07c6398](https://github.com/Kikobeats/finepack/commit/07c6398))
+* Update README.md ([5dc7090](https://github.com/Kikobeats/finepack/commit/5dc7090))
+* Update README.md ([6af5d5a](https://github.com/Kikobeats/finepack/commit/6af5d5a))
 
 
 
