@@ -1,6 +1,6 @@
 'use strict'
 
-Acho     = require 'acho'
+Acho     = require('acho').skin(require('acho-skin-cli'))
 chalk    = require 'chalk'
 jsonlint = require 'jsonlint'
 DEFAULT  = require './Default'
@@ -21,35 +21,29 @@ module.exports = class Report
     missing  : @_validateMissingKeys objt
 
   errorMessage: (cb, data) ->
-    message = @_messageBuilder "Something in #{@name} is wrong. See below."
+    message = "Something in #{@name} is wrong. See below."
     @logger.push 'error', message
     cb true, data, @logger.messages
 
   successMessage: (cb, data) ->
-    message = @_messageBuilder "#{@name} is now fine."
+    message = "#{@name} is now fine."
     @logger.push 'success', message
     cb null, data, @logger.messages
 
   requiredMessage: (cb, data) ->
-    message = @_messageBuilder "#{@name} isn't fine. Check the file and run again."
+    message = "#{@name} isn't fine. Check the file and run again."
     @logger.push 'info', message
     cb null, data, @logger.messages
 
   missingMessage: (cb, data) ->
-    message = @_messageBuilder "#{@name} is almost fine. Check the file and run again."
+    message = "#{@name} is almost fine. Check the file and run again."
     @logger.push 'info', message
     cb null, data, @logger.messages
 
   alreadyMessage: (cb, data) ->
-    message = @_messageBuilder "#{@name} is already fine."
+    message = "#{@name} is already fine."
     @logger.push 'info', message
     cb null, data, @logger.messages
-
-  _messageBuilder: (message) ->
-    return message unless @isColorizable
-    message = message.replace @name, chalk.bold @name
-    message = message.replace 'fine', chalk.bold 'fine'
-    message
 
   _validateRequiredKeys : (objt) ->
     haveRequiredValues = false

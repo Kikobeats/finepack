@@ -7,7 +7,7 @@ require('update-notifier')({pkg: pkg}).notify()
 var fs = require('fs')
 var os = require('os')
 var path = require('path')
-var Logger = require('acho')
+var Logger = require('acho').skin(require('acho-skin-cli'))
 var finepack = require('./../lib/Finepack')
 var existsDefault = require('existential-default')
 var cli = require('meow')({
