@@ -22,8 +22,13 @@
   "keywords": [
     "cleanup",
     "cli",
+    "json",
+    "lint",
+    "organize",
     "package",
-    "tool"
+    "package.json",
+    "tool",
+    "tooling"
   ],
   "dependencies": {
     "acho": "~3.0.0",
@@ -41,10 +46,12 @@
   "devDependencies": {
     "git-dirty": "latest",
     "mocha": "latest",
-    "should": "latest"
+    "should": "latest",
+    "standard": "latest"
   },
   "scripts": {
-    "test": "sh test/test.sh"
+    "pretest": "standard bin",
+    "test": "mocha"
   },
   "preferGlobal": true,
   "license": "MIT"
