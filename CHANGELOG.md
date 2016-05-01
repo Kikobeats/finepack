@@ -1,3 +1,16 @@
+<a name="2.2.3"></a>
+## 2.2.3 (2016-05-01)
+
+* Little testing scaffold refactor ([0d7fb00](https://github.com/Kikobeats/finepack/commit/0d7fb00))
+* Update to acho v3 ([37fcc77](https://github.com/Kikobeats/finepack/commit/37fcc77))
+* chore(package): update acho to version 2.6.0 ([8aad723](https://github.com/Kikobeats/finepack/commit/8aad723))
+* chore(package): update acho to version 2.7.0 ([05cfae9](https://github.com/Kikobeats/finepack/commit/05cfae9))
+* chore(package): update acho to version 2.8.0 ([58b5f53](https://github.com/Kikobeats/finepack/commit/58b5f53))
+* chore(package): update existential-default to version 1.2.1 ([cb30883](https://github.com/Kikobeats/finepack/commit/cb30883))
+* chore(package): update existential-default to version 1.3.1 ([d9ce0f1](https://github.com/Kikobeats/finepack/commit/d9ce0f1))
+
+
+
 <a name="2.2.2"></a>
 ## 2.2.2 (2016-02-02)
 
