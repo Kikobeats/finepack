@@ -1,7 +1,7 @@
 'use strict'
 
 Report        = require './Report'
-KEYWORDS      = require './keywords'
+KEYWORDS      = require './Keywords'
 normalize     = require './Normalize'
 JSONisEqual   = require 'json-is-equal'
 sort          = require 'sort-keys-recursive'
