@@ -5,7 +5,16 @@ omit = require 'lodash.omit'
 
 CONST =
   STRICT_MODE: true
-  EXCLUDE_FIELDS: ['readme', '_id']
+  EXCLUDE_FIELDS: [
+    '_npmOperationalInternal'
+    'directories'
+    'readme'
+    'bugs'
+    '_id'
+    '_shasum'
+    '_from'
+    'npmVersion'
+  ]
 
 normalize = (json) ->
   normalizeData json, CONST.STRICT_MODE
