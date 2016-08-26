@@ -2,17 +2,9 @@
 
 Report        = require './Report'
 Keywords      = require './Keywords'
+normalize     = require './Normalize'
 JSONisEqual   = require 'json-is-equal'
 sort          = require 'sort-keys-recursive'
-normalizeData = require 'normalize-package-data'
-
-normalize = (json) ->
-  STRICT_MODE = true
-  EXCLUDE_FIELDS = ['readme', '_id']
-
-  normalizeData json, STRICT_MODE
-  delete json[field] for field in EXCLUDE_FIELDS
-  json
 
 ###
   @description Organize the keys of JSON file.
