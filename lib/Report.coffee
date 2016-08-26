@@ -1,8 +1,8 @@
 'use strict'
 
-Acho     = require('acho').skin(require('acho-skin-cli'))
 chalk    = require 'chalk'
 jsonlint = require 'jsonlint'
+Logger   = require './Logger'
 keys     = require './Keywords'
 MSG      = require './Messages'
 
@@ -14,7 +14,7 @@ DEFAULT =
 module.exports = class Report
 
   constructor: (@name = 'Your file', @isColorizable = false, @isValidationEnable = false) ->
-    @logger = Acho color: @isColorizable
+    @logger = Logger color: @isColorizable
 
   lint: (objt) ->
     objt = JSON.stringify(objt) if typeof objt isnt 'string'
