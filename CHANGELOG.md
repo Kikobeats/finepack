@@ -1,3 +1,22 @@
+<a name="2.2.4"></a>
+## 2.2.4 (2016-08-26)
+
+* Add more exclude fields ([c03a590](https://github.com/Kikobeats/finepack/commit/c03a590))
+* description as required field ([c701e46](https://github.com/Kikobeats/finepack/commit/c701e46))
+* Extract Logger ([7192962](https://github.com/Kikobeats/finepack/commit/7192962))
+* Extract messages ([6bed07e](https://github.com/Kikobeats/finepack/commit/6bed07e))
+* Extract normalizer ([d5e8014](https://github.com/Kikobeats/finepack/commit/d5e8014))
+* Fix reference ([d26db31](https://github.com/Kikobeats/finepack/commit/d26db31))
+* Fix typo ([0639b01](https://github.com/Kikobeats/finepack/commit/0639b01))
+* Little Refactor ([631b2ab](https://github.com/Kikobeats/finepack/commit/631b2ab))
+* Refactor ([28c9363](https://github.com/Kikobeats/finepack/commit/28c9363))
+* Refactor ([dc24b5e](https://github.com/Kikobeats/finepack/commit/dc24b5e))
+* Remove bugs field ([b042a27](https://github.com/Kikobeats/finepack/commit/b042a27))
+* chore(package): update update-notifier to version 0.7.0 ([d283915](https://github.com/Kikobeats/finepack/commit/d283915))
+* chore(package): update update-notifier to version 1.0.0 ([f5b8bef](https://github.com/Kikobeats/finepack/commit/f5b8bef))
+
+
+
 <a name="2.2.3"></a>
 ## 2.2.3 (2016-05-01)
 
