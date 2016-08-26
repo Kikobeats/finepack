@@ -3,9 +3,9 @@
   "description": "Organizes and maintains readable your JSON files",
   "homepage": "https://github.com/Kikobeats/finepack",
   "version": "2.2.3",
-  "main": "./index.js",
+  "main": "index.js",
   "bin": {
-    "finepack": "./bin/index.js"
+    "finepack": "bin/index.js"
   },
   "author": {
     "name": "Kiko Beats",
@@ -38,6 +38,7 @@
     "existential-default": "~1.3.1",
     "json-is-equal": "~1.0.0",
     "jsonlint": "~1.6.2",
+    "lodash.omit": "~4.5.0",
     "meow": "~3.7.0",
     "normalize-package-data": "~2.3.5",
     "sort-keys-recursive": "~1.1.1",
