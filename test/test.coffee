@@ -32,7 +32,7 @@ describe 'Finepack ::', ->
     file = fs.readFileSync(@fileFixedBackup, encoding: 'utf8')
     fs.writeFileSync(@fileFixed, file, encoding: 'utf8')
 
-  describe 'Lint ::', ->
+  describe 'Linter ::', ->
     it 'lint a malformed file', (done) ->
       data = fs.readFileSync @fileMalformed, {encoding: 'utf8'}
       options = filename: 'pkg.json'
@@ -43,7 +43,7 @@ describe 'Finepack ::', ->
         (messages.error[0]?).should.be.equal true
         done()
 
-  describe 'Validate ::', ->
+  describe 'Validator ::', ->
     it "doesn't validate by default", (done)  ->
       data = fs.readFileSync @fileNormal, {encoding: 'utf8'}
       options = filename: 'pkg.json'
@@ -55,7 +55,7 @@ describe 'Finepack ::', ->
         (typeof output is 'object').should.be.equal true
         done()
 
-    it 'Validate a file without important required keys', (done) ->
+    it 'validate a file without important required keys', (done) ->
       data = fs.readFileSync @fileRequired, {encoding: 'utf8'}
       options = filename: 'pkg.json', validate: true
 
@@ -66,7 +66,7 @@ describe 'Finepack ::', ->
         (typeof output is 'object').should.be.equal true
         done()
 
-    it 'Validate file without recommended keys', (done) ->
+    it 'validate file without recommended keys', (done) ->
       data = fs.readFileSync @fileMissing, {encoding: 'utf8'}
       options = filename: 'pkg.json', validate: true
 
@@ -77,7 +77,7 @@ describe 'Finepack ::', ->
         (typeof output is 'object').should.be.equal true
         done()
 
-    it 'Validate a file that is already validated', (done) ->
+    it 'validate a file that is already validated', (done) ->
       data = fs.readFileSync @fileAlready, {encoding: 'utf8'}
       options = filename: 'pkg.json', validate: true
 
