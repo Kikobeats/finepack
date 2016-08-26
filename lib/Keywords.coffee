@@ -4,7 +4,6 @@ module.exports =
 
   missing: [
     'bugs'
-    'description'
     'keywords'
     'homepage'
     'license'
@@ -12,7 +11,7 @@ module.exports =
     'repository'
   ]
 
-  important: [
+  sort: [
     'name'
     'description'
     'homepage'
@@ -38,5 +37,6 @@ module.exports =
 
   required: [
     'name'
+    'description'
     'version'
   ]

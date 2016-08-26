@@ -1,6 +1,7 @@
 {
   "name": "fishpack",
   "version": "1.0.0",
+  "description": "cli tool that cleans up package.json files.",
   "bin": "./bin/fishpack",
   "bugs": {
     "url": "https://github.com/Kikobeats/fishpack/issues"
@@ -21,7 +22,6 @@
     "tool"
   ],
   "license": "MIT",
-  "main": "fishpack.js",
   "preferGlobal": true,
   "repository": {
     "type": "git",

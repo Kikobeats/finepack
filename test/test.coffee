@@ -39,7 +39,7 @@ describe 'Finepack ::', ->
 
       Finepack data, options, (err, output, messages) ->
         (err?).should.be.equal true
-        (typeof output is 'object').should.be.equal true
+        output.should.be.Object()
         (messages.error[0]?).should.be.equal true
         done()
 
@@ -49,10 +49,10 @@ describe 'Finepack ::', ->
       options = filename: 'pkg.json'
 
       Finepack data, options, (err, output, messages) ->
-        (err?).should.eql.false
+        should(err).be.null()
         (messages.warn[0]?).should.be.equal false
         (messages.success[0]?).should.be.equal true
-        (typeof output is 'object').should.be.equal true
+        output.should.be.Object()
         done()
 
     it 'validate a file without important required keys', (done) ->
@@ -60,10 +60,10 @@ describe 'Finepack ::', ->
       options = filename: 'pkg.json', validate: true
 
       Finepack data, options, (err, output, messages) ->
-        (err?).should.be.equal false
+        should(err).be.null()
         (messages.error[0]?).should.be.equal true
         (messages.info[0]?).should.be.equal true
-        (typeof output is 'object').should.be.equal true
+        output.should.be.Object()
         done()
 
     it 'validate file without recommended keys', (done) ->
@@ -71,10 +71,10 @@ describe 'Finepack ::', ->
       options = filename: 'pkg.json', validate: true
 
       Finepack data, options, (err, output, messages) ->
-        (err?).should.be.equal false
+        should(err).be.null()
         (messages.warn[0]?).should.be.equal true
         (messages.info[0]?).should.be.equal true
-        (typeof output is 'object').should.be.equal true
+        output.should.be.Object()
         done()
 
     it 'validate a file that is already validated', (done) ->
@@ -82,7 +82,7 @@ describe 'Finepack ::', ->
       options = filename: 'pkg.json', validate: true
 
       Finepack data, options, (err, output, messages) ->
-        (err?).should.be.equal false
+        should(err).be.null()
         (messages.info[0]).should.be.equal 'pkg.json is already fine.'
-        (typeof output is 'object').should.be.equal true
+        output.should.be.Object()
         done()

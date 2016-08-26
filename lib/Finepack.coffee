@@ -1,7 +1,7 @@
 'use strict'
 
 Report        = require './Report'
-Keywords      = require './Keywords'
+KEYWORDS      = require './keywords'
 normalize     = require './Normalize'
 JSONisEqual   = require 'json-is-equal'
 sort          = require 'sort-keys-recursive'
@@ -32,7 +32,7 @@ module.exports = (data, options = {}, cb) ->
   return report.requiredMessage(cb, input) if validation.required
 
   input = sort input
-  for key in Keywords.important when input[key]?
+  for key in KEYWORDS.sort when input[key]?
     output[key] = input[key]
     delete input[key]
   output[key] = value for key, value of input
