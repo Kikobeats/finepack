@@ -9,7 +9,6 @@ CONST =
     '_npmOperationalInternal'
     'directories'
     'readme'
-    'bugs'
     '_id'
     '_shasum'
     '_from'
