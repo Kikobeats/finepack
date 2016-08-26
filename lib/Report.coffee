@@ -3,7 +3,7 @@
 chalk    = require 'chalk'
 jsonlint = require 'jsonlint'
 Logger   = require './Logger'
-keys     = require './Keywords'
+KEYWORDS = require './Keywords'
 MSG      = require './Messages'
 
 DEFAULT =
@@ -47,14 +47,14 @@ module.exports = class Report
 
   _validateRequiredKeys : (objt) ->
     haveRequiredValues = false
-    for key in keys.required when not objt[key]?
+    for key in KEYWORDS.required when not objt[key]?
       @logger.push 'error', MSG.required(@key)
       haveRequiredValues = true unless haveRequiredValues
     haveRequiredValues
 
   _validateMissingKeys : (objt) ->
     haveMissingValues = false
-    for key in keys.missing when not objt[key]?
+    for key in KEYWORDS.missing when not objt[key]?
       @logger.push 'warn', MSG.missing(@key)
       haveMissingValues = true unless haveMissingValues
     haveMissingValues
