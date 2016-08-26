@@ -3,8 +3,13 @@
 Acho     = require('acho').skin(require('acho-skin-cli'))
 chalk    = require 'chalk'
 jsonlint = require 'jsonlint'
-DEFAULT  = require './Default'
 keys     = require './Keywords'
+MSG      = require './Messages'
+
+DEFAULT =
+  validate:
+    required: false
+    missing: false
 
 module.exports = class Report
 
@@ -21,40 +26,35 @@ module.exports = class Report
     missing  : @_validateMissingKeys objt
 
   errorMessage: (cb, data) ->
-    message = "Something in #{@name} is wrong. See below."
-    @logger.push 'error', message
+    @logger.push 'error', MSG.wrong(@name)
     cb true, data, @logger.messages
 
   successMessage: (cb, data) ->
-    message = "#{@name} is now fine."
-    @logger.push 'success', message
+    @logger.push 'success', MSG.success(@name)
     cb null, data, @logger.messages
 
   requiredMessage: (cb, data) ->
-    message = "#{@name} isn't fine. Check the file and run again."
-    @logger.push 'info', message
+    @logger.push 'info', MSG.notFine(@name)
     cb null, data, @logger.messages
 
   missingMessage: (cb, data) ->
-    message = "#{@name} is almost fine. Check the file and run again."
-    @logger.push 'info', message
+    @logger.push 'info', MSG.almostFine(@name)
     cb null, data, @logger.messages
 
   alreadyMessage: (cb, data) ->
-    message = "#{@name} is already fine."
-    @logger.push 'info', message
+    @logger.push 'info', MSG.alreadyFine(@name)
     cb null, data, @logger.messages
 
   _validateRequiredKeys : (objt) ->
     haveRequiredValues = false
     for key in keys.required when not objt[key]?
-      @logger.push 'error', "required '#{key}'."
+      @logger.push 'error', MSG.required(@key)
       haveRequiredValues = true unless haveRequiredValues
     haveRequiredValues
 
   _validateMissingKeys : (objt) ->
     haveMissingValues = false
     for key in keys.missing when not objt[key]?
-      @logger.push 'warn', "missing '#{key}'."
+      @logger.push 'warn', MSG.missing(@key)
       haveMissingValues = true unless haveMissingValues
     haveMissingValues
