@@ -48,13 +48,13 @@ module.exports = class Report
   _validateRequiredKeys : (objt) ->
     haveRequiredValues = false
     for key in KEYWORDS.required when not objt[key]?
-      @logger.push 'error', MSG.required(@key)
+      @logger.push 'error', MSG.required(key)
       haveRequiredValues = true unless haveRequiredValues
     haveRequiredValues
 
   _validateMissingKeys : (objt) ->
     haveMissingValues = false
     for key in KEYWORDS.missing when not objt[key]?
-      @logger.push 'warn', MSG.missing(@key)
+      @logger.push 'warn', MSG.missing(key)
       haveMissingValues = true unless haveMissingValues
     haveMissingValues
