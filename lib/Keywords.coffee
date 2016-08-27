@@ -11,6 +11,10 @@ module.exports =
     'repository'
   ]
 
+  missingValues: [
+    'keywords'
+  ]
+
   sort: [
     'name'
     'description'

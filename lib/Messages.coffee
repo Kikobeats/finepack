@@ -9,3 +9,4 @@ module.exports =
   allIsFine: (name) -> "#{name} is now fine."
   required: (key) -> "required '#{key}'."
   missing: (key) -> "missing '#{key}'."
+  invalidValue: (key, msg) -> "invalid '#{key}', #{msg}."

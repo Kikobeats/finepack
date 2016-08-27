@@ -45,16 +45,32 @@ module.exports = class Report
     @logger.push 'info', MSG.alreadyFine(@name)
     cb null, data, @logger.messages
 
-  _validateRequiredKeys : (objt) ->
+  _validateRequiredKeys: (objt) ->
     haveRequiredValues = false
+
     for key in KEYWORDS.required when not objt[key]?
       @logger.push 'error', MSG.required(key)
       haveRequiredValues = true unless haveRequiredValues
+
     haveRequiredValues
 
-  _validateMissingKeys : (objt) ->
+  _validateMissingKeys: (objt) ->
     haveMissingValues = false
-    for key in KEYWORDS.missing when not objt[key]?
-      @logger.push 'warn', MSG.missing(key)
-      haveMissingValues = true unless haveMissingValues
+
+    for key in KEYWORDS.missing
+      unless objt[key]?
+        @logger.push 'warn', MSG.missing(key)
+        haveMissingValues = true unless haveMissingValues
+      else
+        hasInvalidValue = @_validateMissingKeysValues(objt, key)
+        if (hasInvalidValue)
+          @logger.push 'error', hasInvalidValue
+          haveMissingValues = true unless haveMissingValues
+
     haveMissingValues
+
+  _validateMissingKeysValues: (objt, key) ->
+    return false unless KEYWORDS.missingValues.indexOf(key) isnt -1
+    switch key
+      when 'keywords'
+        MSG.invalidValue(key, 'is empty') if objt[key].length is 0
