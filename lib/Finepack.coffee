@@ -26,17 +26,27 @@ module.exports = (data, opts = {}, cb) ->
 
   report = new Report opts.filename, opts.color, opts.validate
 
+  # We only handle with well formed data
   try
     report.lint data
   catch err
     return report.errorMessage cb, err
 
-  input  = normalize(if typeof data is 'string' then JSON.parse data else data)
+  input = if typeof data is 'string' then JSON.parse data else data
+
+  # We try to normalize metadata; it's fails no problem, it will be detected
+  # in the validation step
+  try
+    input  = normalize input
+  catch err
+
   output = {}
 
   validation = report.validate input
   return report.requiredMessage(cb, input) if validation.required
 
+  # The default sort is alphabetically
+  # after that we move some esthetic fields positions.
   input = sort input
 
   for key in KEYWORDS.sort when input[key]?
