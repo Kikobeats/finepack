@@ -1,3 +1,12 @@
+<a name="2.3.0"></a>
+# 2.3.0 (2016-08-27)
+
+* Improve defaults values ([8d113bb](https://github.com/Kikobeats/finepack/commit/8d113bb))
+* Normalize best effort ([a2e9212](https://github.com/Kikobeats/finepack/commit/a2e9212))
+* Validate values ([3621360](https://github.com/Kikobeats/finepack/commit/3621360))
+
+
+
 <a name="2.2.4"></a>
 ## 2.2.4 (2016-08-26)
 

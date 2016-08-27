@@ -2,14 +2,14 @@
   "name": "finepack",
   "description": "Organizes and maintains readable your JSON files",
   "homepage": "https://github.com/Kikobeats/finepack",
-  "version": "2.2.4",
+  "version": "2.3.0",
   "main": "index.js",
   "bin": {
     "finepack": "bin/index.js"
   },
   "author": {
-    "name": "Kiko Beats",
     "email": "josefrancisco.verdu@gmail.com",
+    "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
   },
   "repository": {
