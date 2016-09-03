@@ -1,11 +1,11 @@
 'use strict'
 
-Report        = require './Report'
-KEYWORDS      = require './Keywords'
-normalize     = require './Normalize'
-JSONisEqual   = require 'json-is-equal'
-sort          = require 'sort-keys-recursive'
-defaults      = require 'lodash.defaults'
+Report      = require './Report'
+sort        = require 'sort-keys'
+KEYWORDS    = require './Keywords'
+normalize   = require './Normalize'
+JSONisEqual = require 'json-is-equal'
+defaults    = require 'lodash.defaults'
 
 DEFAULT =
   color: true
@@ -47,7 +47,7 @@ module.exports = (data, opts = {}, cb) ->
 
   # The default sort is alphabetically
   # after that we move some esthetic fields positions.
-  input = sort input
+  input = sort input, deep:true
 
   for key in KEYWORDS.sort when input[key]?
     output[key] = input[key]
