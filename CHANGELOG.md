@@ -1,3 +1,10 @@
+<a name="2.3.1"></a>
+## 2.3.1 (2016-09-03)
+
+* Replace sort-keys-recursive → sort-keys dep ([8aef11d](https://github.com/Kikobeats/finepack/commit/8aef11d))
+
+
+
 <a name="2.3.0"></a>
 # 2.3.0 (2016-08-27)
 
