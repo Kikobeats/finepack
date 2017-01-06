@@ -16,10 +16,10 @@
   },
   "homepage": "https://github.com/Kikobeats/fishpack",
   "keywords": [
+    "tool",
     "cleanup",
     "cli",
-    "package",
-    "tool"
+    "package"
   ],
   "license": "MIT",
   "main": "fishpack.js",

@@ -20,15 +20,22 @@
     "url": "https://github.com/Kikobeats/finepack/issues"
   },
   "keywords": [
+    "clean",
     "cleanup",
     "cli",
+    "deterministic",
+    "esthetic",
     "json",
     "lint",
     "organize",
     "package",
     "package.json",
+    "pkg",
     "tool",
-    "tooling"
+    "tooling",
+    "util",
+    "utility",
+    "validate"
   ],
   "dependencies": {
     "acho": "~3.1.0",
@@ -42,19 +49,26 @@
     "lodash.omit": "~4.5.0",
     "meow": "~3.7.0",
     "normalize-package-data": "~2.3.5",
-    "sort-keys": "~1.1.2",
-    "sort-keys-recursive": "~1.1.1",
+    "sort-keys-recursive": "~1.2.0",
     "update-notifier": "~1.0.0"
   },
   "devDependencies": {
+    "coveralls": "latest",
     "git-dirty": "latest",
     "mocha": "latest",
+    "nyc": "latest",
     "should": "latest",
-    "standard": "latest"
+    "standard": "latest",
+    "standard-markdown": "latest"
+  },
+  "engines": {
+    "node": ">=4"
   },
   "scripts": {
-    "pretest": "standard bin",
-    "test": "mocha"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "standard-markdown && standard",
+    "pretest": "npm run lint",
+    "test": "nyc mocha"
   },
   "preferGlobal": true,
   "license": "MIT"

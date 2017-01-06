@@ -86,3 +86,15 @@ describe 'Finepack ::', ->
         (messages.info[0]).should.be.equal 'pkg.json is already fine.'
         output.should.be.Object()
         done()
+
+    it 'sort keywords', (done) ->
+      data = fs.readFileSync @fileMissing, {encoding: 'utf8'}
+      options = filename: 'pkg.json', validate: true
+
+      Finepack data, options, (err, output, messages) ->
+        should(err).be.null()
+        (messages.warn[0]?).should.be.equal true
+        (messages.info[0]?).should.be.equal true
+        output.should.be.Object()
+        output.keywords.should.be.eql([ 'cleanup', 'cli', 'package', 'tool' ])
+        done()

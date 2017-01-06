@@ -1,11 +1,12 @@
 # finepack
 
 ![Last version](https://img.shields.io/github/tag/Kikobeats/finepack.svg?style=flat-square)
-[![Build Status](http://img.shields.io/travis/Kikobeats/finepack/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/finepack)
-[![Dependency status](http://img.shields.io/david/Kikobeats/finepack.svg?style=flat-square)](https://david-dm.org/Kikobeats/finepack)
-[![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/finepack.svg?style=flat-square)](https://david-dm.org/Kikobeats/finepack#info=devDependencies)
-[![NPM Status](http://img.shields.io/npm/dm/finepack.svg?style=flat-square)](https://www.npmjs.org/package/finepack)
-[![Gittip](http://img.shields.io/gittip/Kikobeats.svg?style=flat-square)](https://www.gittip.com/Kikobeats/)
+[![Build Status](https://img.shields.io/travis/Kikobeats/finepack/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/finepack)
+[![Coverage Status](https://img.shields.io/coveralls/Kikobeats/finepack.svg?style=flat-square)](https://coveralls.io/github/Kikobeats/finepack)
+[![Dependency status](https://img.shields.io/david/Kikobeats/finepack.svg?style=flat-square)](https://david-dm.org/Kikobeats/finepack)
+[![Dev Dependencies Status](https://img.shields.io/david/dev/Kikobeats/finepack.svg?style=flat-square)](https://david-dm.org/Kikobeats/finepack#info=devDependencies)
+[![NPM Status](https://img.shields.io/npm/dm/str-match.svg?style=flat-square)](https://www.npmjs.org/package/str-match)
+[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/Kikobeats)
 
 > Organizes and maintains readable your JSON files.
 
@@ -28,6 +29,8 @@ npm install finepack -g
 
 ## Usage
 
+### CLI
+
 ```
 $ finepack
 
@@ -46,17 +49,17 @@ $ finepack
      finepack bower.json --no-validate
 ```
 
-## API
+### API
 
 For uses inside your NodeJS project, just install as normal dependency.
 
 ```js
-var fs       = require('fs');
-var path     = require('path');
-var finepack = require('finepack');
-var filepath = path.resolve('./package.json');
-var filename = path.basename(filepath);
-var filedata = fs.readFileSync(filepath, {encoding: 'utf8'});
+var fs = require('fs')
+var path = require('path')
+var finepack = require('finepack')
+var filename = path.basename(filepath)
+var filepath = path.resolve('./package.json')
+var filedata = fs.readFileSync(filepath, {encoding: 'utf8'})
 
 var options = {
   filename: filename, // for customize the output messages, but is not necessary.
@@ -64,11 +67,10 @@ var options = {
   color: false // For enable (or not) colorize or not the output (false by default).
 }
 
-finepack(filedata, options, function(err, output, messages){
-  if (err){
-    // if your JSON is malformed then you have an err
-  }
-});
+finepack(filedata, options, function (err, output, messages) {
+  if (err) throw err
+  // if your JSON is malformed then you have an err
+})
 ```
 
 ## License
