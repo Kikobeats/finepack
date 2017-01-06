@@ -1,3 +1,18 @@
+<a name="2.4.0"></a>
+# 2.4.0 (2017-01-06)
+
+* Tweaks ([3a7c1ed](https://github.com/Kikobeats/finepack/commit/3a7c1ed))
+* Update coffeescript dep ([e3c770a](https://github.com/Kikobeats/finepack/commit/e3c770a))
+* chore: drop support for Node.js 0.10 ([70b92f5](https://github.com/Kikobeats/finepack/commit/70b92f5))
+* chore(package): update acho to version 3.1.0 ([c30033b](https://github.com/Kikobeats/finepack/commit/c30033b))
+* chore(package): update coffee-script to version 1.11.0 ([b175817](https://github.com/Kikobeats/finepack/commit/b175817))
+
+
+### BREAKING CHANGE
+
+* This module no longer supports Node.js 0.10
+
+
 <a name="2.3.1"></a>
 ## 2.3.1 (2016-09-03)
 
