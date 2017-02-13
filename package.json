@@ -50,7 +50,7 @@
     "meow": "~3.7.0",
     "normalize-package-data": "~2.3.5",
     "sort-keys-recursive": "~1.2.0",
-    "update-notifier": "~1.0.0"
+    "update-notifier": "~2.0.0"
   },
   "devDependencies": {
     "coveralls": "latest",
