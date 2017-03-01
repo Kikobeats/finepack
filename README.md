@@ -17,8 +17,9 @@
 -   Lints the JSON to be sure that it is in a valid format.
 -   Validates the keys to make sure of the existence of required keys such as `name` or `version`, and other important keys such as `homepage`, `main`, `license`...
 -   Organizes the JSON by moving the most important properties to the top.
--   Sorts the rest of the keys alphabetically and recursively.
+-   Sorts the rest of the keys alphabetically and recursively using the JavaScript [sort](https://mzl.la/1jBtmgE) function (elements are sorted by converting them to strings and comparing strings in Unicode code point order).
 -   Can be configured not to sort the arrays or objects at one or more user specified keys.
+-   Can use a user-provided compare function to define the sort order.
 
 You can use **Finepack** as a CLI tool or from NodeJS as a library. Based on [fixpack](https://github.com/henrikjoreteg/fixpack) but with a little more ♥.
 
@@ -41,9 +42,11 @@ $ finepack
     $ finepack <fileJSON> [options]
 
     options:
-     --no-validate disable validation mode.
-     --no-color    disable colors in the output.
-     --version     output the current version.
+     --no-validate             disable validation mode.
+     --no-color                disable colors in the output.
+     --sort-ignore-object-at   don't sort object(s) at these comma separated key(s).
+     --sort-ignore-array-at    don't sort array(s) at these comma separated key(s).
+     --version                 output the current version.
 
     examples:
      finepack package.json
@@ -55,17 +58,21 @@ $ finepack
 To use **Finepack** inside your NodeJS project, just install it as a normal dependency.
 
 ```js
-var fs = require('fs')
-var path = require('path')
-var finepack = require('finepack')
-var filename = path.basename(filepath)
-var filepath = path.resolve('./package.json')
-var filedata = fs.readFileSync(filepath, {encoding: 'utf8'})
+const fs = require('fs')
+const path = require('path')
+const finepack = require('finepack')
+const filename = path.basename(filepath)
+const filepath = path.resolve('./package.json')
+const filedata = fs.readFileSync(filepath, {encoding: 'utf8'})
 
-var options = {
+const options = {
   filename: filename, // To customize the output messages, but it is not necessary.
   validate: false, // To enable (or not) keys validation (false by default).
-  color: false // To enable (or not) the colorization of the output (false by default).
+  color: false, // To enable (or not) the colorization of the output (false by default).
+  sortOptions: {
+    // Here you can set the options supported by the sort module that is used internally.
+    // SEE: https://github.com/Kikobeats/sort-keys-recursive#options
+  }
 }
 
 finepack(filedata, options, function (err, output, messages) {
