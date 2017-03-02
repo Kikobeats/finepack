@@ -1,3 +1,14 @@
+<a name="2.5.0"></a>
+# 2.5.0 (2017-03-02)
+
+* Add clean script ([e7cb529](https://github.com/Kikobeats/finepack/commit/e7cb529))
+* feat: update sort-keys-recursive to version 2.0.0 ([0a05651](https://github.com/Kikobeats/finepack/commit/0a05651))
+* docs: fix typos and rearrange some sentences ([2c7bf38](https://github.com/Kikobeats/finepack/commit/2c7bf38))
+* chore(package): update update-notifier to version 2.0.0 ([361b6d6](https://github.com/Kikobeats/finepack/commit/361b6d6))
+* chore(package): update update-notifier to version 2.1.0 ([def7b53](https://github.com/Kikobeats/finepack/commit/def7b53))
+
+
+
 <a name="2.4.0"></a>
 # 2.4.0 (2017-01-06)
 
