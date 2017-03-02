@@ -18,6 +18,7 @@ describe 'Finepack ::', ->
     @fileFixedBackup = path.resolve 'test/fixtures/pkg_fixed_backup.json'
     @fileMalformed = path.resolve 'test/fixtures/pkg_malformed.json'
     @fileAlready = path.resolve 'test/fixtures/pkg_already_fine.json'
+    @fileCustomProperty = path.resolve 'test/fixtures/pkg_custom_properties.json'
 
   beforeEach ->
     file = fs.readFileSync(@fileNormalBackup, encoding: 'utf8')
@@ -97,4 +98,50 @@ describe 'Finepack ::', ->
         (messages.info[0]?).should.be.equal true
         output.should.be.Object()
         output.keywords.should.be.eql([ 'cleanup', 'cli', 'package', 'tool' ])
+        done()
+
+    it 'validate file > options.sortOptions.compareFunction', (done) ->
+      data = fs.readFileSync @fileCustomProperty, {encoding: 'utf8'}
+      compareFunction = (a, b) -> a > b
+      options = filename: 'pkg.json', sortOptions:{compareFunction}
+
+      Finepack data, options, (err, output, messages) ->
+        should(err).be.null()
+        output.should.be.Object()
+
+        # Expect the elements of 'foo' to be in the original positions.
+        output.aCustomKey.anObject.foo.should.be.eql([true, {bar: "baz"}])
+
+        done()
+
+    it 'validate file > options.sortOptions.ignoreArrayAtKeys', (done) ->
+      data = fs.readFileSync @fileCustomProperty, {encoding: 'utf8'}
+      options = filename: 'pkg.json', sortOptions:{ignoreArrayAtKeys: ['anArray']}
+
+      Finepack data, options, (err, output, messages) ->
+        should(err).be.null()
+        output.should.be.Object()
+
+        # Expect 'foo' to be sorted according to "string Unicode code points",
+        # which means object before boolean in this case.
+        output.aCustomKey.anObject.foo.should.be.eql([{bar: "baz"}, true])
+        # Expect the original 'anArray' to be "untouched", not sorted.
+        output.aCustomKey.anArray.should.be.eql(['nine', 'eight', 'ten'])
+
+        done()
+
+    it 'validate file > options.sortOptions.ignoreObjectAtKeys', (done) ->
+      data = fs.readFileSync @fileCustomProperty, {encoding: 'utf8'}
+      options = filename: 'pkg.json', sortOptions:{ignoreObjectAtKeys: ['anObject']}
+
+      Finepack data, options, (err, output, messages) ->
+        should(err).be.null()
+        output.should.be.Object()
+
+        # Expect the original 'foo' to be "untouched", not sorted. It is a child
+        # of the object 'anObject', specified in 'ignoreObjectAtKeys'.
+        output.aCustomKey.anObject.foo.should.be.eql([true, {bar: "baz"}])
+        # Expect 'anArray' to be alphabetically sorted.
+        output.aCustomKey.anArray.should.be.eql(['eight', 'nine', 'ten'])
+
         done()
