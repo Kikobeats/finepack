@@ -65,6 +65,7 @@
     "node": ">=4"
   },
   "scripts": {
+    "clean": "npm prune && npm i ",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard-markdown && standard",
     "pretest": "npm run lint",
