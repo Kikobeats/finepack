@@ -1,3 +1,10 @@
+<a name="2.5.1"></a>
+## 2.5.1 (2017-03-04)
+
+* fix: sort keys in './lib/Keywords.coffee' > 'sort' before the other keys ([092b504](https://github.com/Kikobeats/finepack/commit/092b504))
+
+
+
 <a name="2.5.0"></a>
 # 2.5.0 (2017-03-02)
 
