@@ -100,6 +100,38 @@ describe 'Finepack ::', ->
         output.keywords.should.be.eql([ 'cleanup', 'cli', 'package', 'tool' ])
         done()
 
+    it 'sort \'special\' keys before the other keys', (done) ->
+      data = fs.readFileSync @fileCustomProperty, {encoding: 'utf8'}
+      options = filename: 'pkg.json'
+
+      Finepack data, options, (err, output, messages) ->
+        should(err).be.null()
+        output.should.be.Object()
+
+        # Expect the three keys not included in './lib/Keywords.coffee' > 'sort'
+        # to be at the end of the 'output' object and sorted alphabetically.
+        expectedKeys = ['aCustomKey', 'secondCustomKey', 'thirdCustomKey']
+        Object.keys(output).slice(-3).should.be.eql(expectedKeys)
+
+        done()
+
+    it 'sort \'special\' keys before the other keys (+ \'compareFunction\')', (done) ->
+      data = fs.readFileSync @fileCustomProperty, {encoding: 'utf8'}
+      compareFunction = (a, b) -> a < b
+      options = filename: 'pkg.json', sortOptions:{ compareFunction}
+
+      Finepack data, options, (err, output, messages) ->
+        should(err).be.null()
+        output.should.be.Object()
+
+        # Expect the three keys not included in './lib/Keywords.coffee' > 'sort'
+        # to be at the end of the 'output' object. Also expect them to have been
+        # sorted in reverse alphabetical order by 'compareFunction'.
+        expectedKeys = ['thirdCustomKey', 'secondCustomKey', 'aCustomKey']
+        Object.keys(output).slice(-3).should.be.eql(expectedKeys)
+
+        done()
+
     it 'validate file > options.sortOptions.compareFunction', (done) ->
       data = fs.readFileSync @fileCustomProperty, {encoding: 'utf8'}
       compareFunction = (a, b) -> a > b

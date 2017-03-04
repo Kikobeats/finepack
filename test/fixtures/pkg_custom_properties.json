@@ -21,6 +21,12 @@
     "cli",
     "package"
   ],
+  "secondCustomKey": {
+    "anArray": [
+      "foo",
+      "bar"
+    ]
+  },
   "license": "MIT",
   "main": "fishpack.js",
   "preferGlobal": true,
@@ -45,5 +51,11 @@
         }
       ]
     }
+  },
+  "thirdCustomKey": {
+    "anArray": [
+      "bar",
+      "baz"
+    ]
   }
 }
