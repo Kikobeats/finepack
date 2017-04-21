@@ -48,7 +48,7 @@
     "lodash.defaults": "~4.2.0",
     "lodash.omit": "~4.5.0",
     "meow": "~3.7.0",
-    "normalize-package-data": "~2.3.5",
+    "normalize-package-data": "~2.3.7",
     "sort-keys-recursive": "~2.0.0",
     "update-notifier": "~2.1.0"
   },
