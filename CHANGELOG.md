@@ -1,3 +1,13 @@
+<a name="2.5.2"></a>
+## 2.5.2 (2017-05-22)
+
+* Update deps ([68667a3](https://github.com/Kikobeats/finepack/commit/68667a3))
+* chore: add 'browser', 'module', 'jsnext:main' as special keywords ([afef6f3](https://github.com/Kikobeats/finepack/commit/afef6f3))
+* chore(package): update acho to version 3.2.0 ([f148c84](https://github.com/Kikobeats/finepack/commit/f148c84))
+* chore(package): update acho to version 3.3.0 ([c6bcf65](https://github.com/Kikobeats/finepack/commit/c6bcf65))
+
+
+
 <a name="2.5.1"></a>
 ## 2.5.1 (2017-03-04)
 
