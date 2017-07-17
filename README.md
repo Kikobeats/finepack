@@ -1,5 +1,7 @@
 # finepack
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Kikobeats/finepack.svg)](https://greenkeeper.io/)
+
 ![Last version](https://img.shields.io/github/tag/Kikobeats/finepack.svg?style=flat-square)
 [![Build Status](https://img.shields.io/travis/Kikobeats/finepack/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/finepack)
 [![Coverage Status](https://img.shields.io/coveralls/Kikobeats/finepack.svg?style=flat-square)](https://coveralls.io/github/Kikobeats/finepack)
