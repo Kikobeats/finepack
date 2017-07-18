@@ -61,8 +61,8 @@ To use **Finepack** inside your NodeJS project, just install it as a normal depe
 const fs = require('fs')
 const path = require('path')
 const finepack = require('finepack')
-const filename = path.basename(filepath)
 const filepath = path.resolve('./package.json')
+const filename = path.basename(filepath)
 const filedata = fs.readFileSync(filepath, {encoding: 'utf8'})
 
 const options = {
