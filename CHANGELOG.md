@@ -1,3 +1,13 @@
+<a name="2.5.3"></a>
+## 2.5.3 (2017-07-18)
+
+* Fix linter ([3f4fa85](https://github.com/Kikobeats/finepack/commit/3f4fa85))
+* Update README.md ([d08196d](https://github.com/Kikobeats/finepack/commit/d08196d))
+* docs(readme): add Greenkeeper badge ([e89b748](https://github.com/Kikobeats/finepack/commit/e89b748))
+* chore(package): update dependencies ([82f49ee](https://github.com/Kikobeats/finepack/commit/82f49ee))
+
+
+
 <a name="2.5.2"></a>
 ## 2.5.2 (2017-05-22)
 
