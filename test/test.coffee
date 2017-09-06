@@ -117,7 +117,7 @@ describe 'Finepack ::', ->
 
     it 'sort \'special\' keys before the other keys (+ \'compareFunction\')', (done) ->
       data = fs.readFileSync @fileCustomProperty, {encoding: 'utf8'}
-      compareFunction = (a, b) -> a < b
+      compareFunction = (a, b) -> if a < b then 1 else if a > b then -1 else 0
       options = filename: 'pkg.json', sortOptions:{ compareFunction}
 
       Finepack data, options, (err, output, messages) ->
