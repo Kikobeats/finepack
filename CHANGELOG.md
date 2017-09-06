@@ -1,3 +1,10 @@
+<a name="2.6.0"></a>
+# 2.6.0 (2017-09-06)
+
+* Avoid mutate special inmutable keys ([c87d380](https://github.com/Kikobeats/finepack/commit/c87d380))
+
+
+
 <a name="2.5.4"></a>
 ## 2.5.4 (2017-09-06)
 
