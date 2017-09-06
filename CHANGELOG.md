@@ -1,3 +1,16 @@
+<a name="2.5.4"></a>
+## 2.5.4 (2017-09-06)
+
+* Compare function should return number (not boolean) ([8009f65](https://github.com/Kikobeats/finepack/commit/8009f65))
+* Fix linter ([3f4fa85](https://github.com/Kikobeats/finepack/commit/3f4fa85))
+* Release 2.5.3 ([f236aad](https://github.com/Kikobeats/finepack/commit/f236aad))
+* Update README.md ([d08196d](https://github.com/Kikobeats/finepack/commit/d08196d))
+* fix(package): update chalk to version 2.1.0 ([03cf16e](https://github.com/Kikobeats/finepack/commit/03cf16e))
+* docs(readme): add Greenkeeper badge ([e89b748](https://github.com/Kikobeats/finepack/commit/e89b748))
+* chore(package): update dependencies ([82f49ee](https://github.com/Kikobeats/finepack/commit/82f49ee))
+
+
+
 <a name="2.5.3"></a>
 ## 2.5.3 (2017-07-18)
 
