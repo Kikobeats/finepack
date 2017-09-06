@@ -44,7 +44,8 @@ module.exports = (data, opts = {}, cb) ->
   catch err
     return report.errorMessage cb, err
 
-  input = if typeof data is 'string' then JSON.parse data else data
+  rawData = if typeof data is 'string' then JSON.parse data else data
+  input =  Object.assign({}, rawData)
 
   # We try to normalize the metadata; if it fails no problem, it will be detected
   # in the validation step.
@@ -79,6 +80,9 @@ module.exports = (data, opts = {}, cb) ->
 
   # We sort the keys in 'input' by the order they appear in 'orderedInputKeys'.
   output = sortObjectKeysBy input, orderedInputKeys
+
+  # Restore special key sensitive to sorting
+  output[key] = rawData[key] for key in KEYWORDS.inmutable when output[key]?
 
   return report.missingMessage(cb, output) if validation.missing
   return report.alreadyMessage(cb, output) if JSONisEqual data, output

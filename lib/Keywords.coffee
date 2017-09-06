@@ -47,3 +47,7 @@ module.exports =
     'description'
     'version'
   ]
+
+  inmutable: [
+    'lint-staged'
+  ]

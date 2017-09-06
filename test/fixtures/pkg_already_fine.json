@@ -32,5 +32,11 @@
     "test": "sh test/test.sh"
   },
   "preferGlobal": true,
-  "license": "MIT"
+  "license": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "prettier-standard",
+      "git add"
+    ]
+  }
 }
