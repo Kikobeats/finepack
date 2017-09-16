@@ -5,7 +5,7 @@
 [![Coverage Status](https://img.shields.io/coveralls/Kikobeats/finepack.svg?style=flat-square)](https://coveralls.io/github/Kikobeats/finepack)
 [![Dependency status](https://img.shields.io/david/Kikobeats/finepack.svg?style=flat-square)](https://david-dm.org/Kikobeats/finepack)
 [![Dev Dependencies Status](https://img.shields.io/david/dev/Kikobeats/finepack.svg?style=flat-square)](https://david-dm.org/Kikobeats/finepack#info=devDependencies)
-[![NPM Status](https://img.shields.io/npm/dm/str-match.svg?style=flat-square)](https://www.npmjs.org/package/str-match)
+[![NPM Status](https://img.shields.io/npm/dm/finepack.svg?style=flat-square)](https://www.npmjs.org/package/finepack)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/Kikobeats)
 
 > Organizes and maintains your JSON files readable.
