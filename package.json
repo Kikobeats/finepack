@@ -38,7 +38,7 @@
     "validate"
   ],
   "dependencies": {
-    "acho": "~3.3.0",
+    "acho": "~4.0.0",
     "acho-skin-cli": "~1.0.0",
     "chalk": "~2.1.0",
     "coffee-script": "~1.12.6",
