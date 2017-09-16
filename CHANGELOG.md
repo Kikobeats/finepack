@@ -1,3 +1,10 @@
+<a name="2.6.1"></a>
+## 2.6.1 (2017-09-16)
+
+* Update deps ([25cc1cf](https://github.com/Kikobeats/finepack/commit/25cc1cf))
+
+
+
 <a name="2.6.0"></a>
 # 2.6.0 (2017-09-06)
 
