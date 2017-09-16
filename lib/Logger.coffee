@@ -1,1 +1,7 @@
-module.exports = require('acho').skin(require('acho-skin-cli'))
+'use strict'
+
+acho = require 'acho'
+skinCLI = require 'acho-skin-cli'
+
+module.exports = (opts) ->
+  acho(Object.assign({types: skinCLI}, opts))

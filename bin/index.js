@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 'use strict'
 require('coffee-script').register()
 const pkg = require('../package.json')
@@ -7,7 +8,9 @@ require('update-notifier')({pkg}).notify()
 const fs = require('fs')
 const os = require('os')
 const path = require('path')
-const Logger = require('acho').skin(require('acho-skin-cli'))
+const createLogger = require('acho')
+const loggerSkinCLI = require('acho-skin-cli')
+
 const finepack = require('./../lib/Finepack')
 const cli = require('meow')({
   pkg,
@@ -68,16 +71,16 @@ fs.readFile(filepath, {encoding: 'utf8'}, (err, filedata) => {
   if (err) throw err
 
   finepack(filedata, options, (error, output, messages) => {
-    const logger = new Logger({
-      align: false,
+    const log = createLogger({
+      types: loggerSkinCLI,
       keyword: 'symbol',
       color: options.color,
       messages: messages
     })
 
     if (error) {
-      logger.print()
-      logger.error(output)
+      log.print()
+      log.error(output)
       return process.exit(1)
     }
 
@@ -85,7 +88,7 @@ fs.readFile(filepath, {encoding: 'utf8'}, (err, filedata) => {
     fs.writeFile(filepath, output, {encoding: 'utf8'}, (err) => {
       if (err) throw err
       console.log()
-      logger.print()
+      log.print()
     })
   })
 })
