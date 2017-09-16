@@ -1,3 +1,10 @@
+<a name="2.6.2"></a>
+## 2.6.2 (2017-09-16)
+
+* Update meta ([4ca5e59](https://github.com/Kikobeats/finepack/commit/4ca5e59))
+
+
+
 <a name="2.6.1"></a>
 ## 2.6.1 (2017-09-16)
 

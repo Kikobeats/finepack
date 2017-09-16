@@ -2,7 +2,7 @@
   "name": "finepack",
   "description": "Organizes and maintains your JSON files readable",
   "homepage": "https://github.com/Kikobeats/finepack",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "main": "index.js",
   "bin": {
     "finepack": "bin/index.js"
@@ -12,11 +12,6 @@
     "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
   },
-  "files": [
-    "bin",
-    "lib",
-    "index.js"
-  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/Kikobeats/finepack.git"
@@ -69,6 +64,11 @@
   "engines": {
     "node": ">=4"
   },
+  "files": [
+    "bin",
+    "index.js",
+    "lib"
+  ],
   "scripts": {
     "clean": "npm prune && npm i ",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
