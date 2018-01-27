@@ -1,3 +1,17 @@
+<a name="2.7.0"></a>
+# 2.7.0 (2018-01-27)
+
+* Drop node 4 support ([f55a0aa](https://github.com/Kikobeats/finepack/commit/f55a0aa))
+* Update README.md ([ea76e3a](https://github.com/Kikobeats/finepack/commit/ea76e3a))
+* Validate files as required field ([0358b61](https://github.com/Kikobeats/finepack/commit/0358b61)), closes [#57](https://github.com/Kikobeats/finepack/issues/57)
+* fix(package): update chalk to version 2.2.0 ([d7c7e2c](https://github.com/Kikobeats/finepack/commit/d7c7e2c))
+* fix(package): update chalk to version 2.3.0 ([8f76a1e](https://github.com/Kikobeats/finepack/commit/8f76a1e))
+* fix(package): update meow to version 4.0.0 ([10795c9](https://github.com/Kikobeats/finepack/commit/10795c9))
+* fix(package): update update-notifier to version 2.3.0 ([fdd33e2](https://github.com/Kikobeats/finepack/commit/fdd33e2))
+* docs(readme): add Greenkeeper badge ([8739e12](https://github.com/Kikobeats/finepack/commit/8739e12))
+
+
+
 <a name="2.6.2"></a>
 ## 2.6.2 (2017-09-16)
 
