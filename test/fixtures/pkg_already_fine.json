@@ -28,6 +28,9 @@
   "devDependencies": {
     "mocha": "*"
   },
+  "files": [
+    "index.js"
+  ],
   "scripts": {
     "test": "sh test/test.sh"
   },

@@ -27,6 +27,9 @@
       "bar"
     ]
   },
+  "files": [
+    "index.js"
+  ],
   "license": "MIT",
   "main": "fishpack.js",
   "preferGlobal": true,

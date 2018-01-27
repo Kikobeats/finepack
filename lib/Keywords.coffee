@@ -46,6 +46,7 @@ module.exports =
     'name'
     'description'
     'version'
+    'files'
   ]
 
   inmutable: [

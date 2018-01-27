@@ -6,6 +6,9 @@
   "bugs": {
     "url": "https://github.com/Kikobeats/fishpack/issues"
   },
+  "files": [
+    "index.js"
+  ],
   "dependencies": {
     "chalk": "*",
     "coffee-script": "*",
