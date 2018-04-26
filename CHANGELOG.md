@@ -1,3 +1,10 @@
+<a name="2.7.2"></a>
+## 2.7.2 (2018-04-26)
+
+* Remove unnecessary dep ([28a7909](https://github.com/Kikobeats/finepack/commit/28a7909))
+
+
+
 <a name="2.7.1"></a>
 ## 2.7.1 (2018-04-26)
 
