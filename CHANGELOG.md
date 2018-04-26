@@ -1,3 +1,14 @@
+<a name="2.7.1"></a>
+## 2.7.1 (2018-04-26)
+
+* Avoid validate private packages ([e8835c2](https://github.com/Kikobeats/finepack/commit/e8835c2))
+* fix(package): update chalk to version 2.4.0 ([c53c4e9](https://github.com/Kikobeats/finepack/commit/c53c4e9))
+* fix(package): update meow to version 5.0.0 ([ad78097](https://github.com/Kikobeats/finepack/commit/ad78097))
+* fix(package): update update-notifier to version 2.4.0 ([8c81cbd](https://github.com/Kikobeats/finepack/commit/8c81cbd))
+* fix(package): update update-notifier to version 2.5.0 ([e90d7cb](https://github.com/Kikobeats/finepack/commit/e90d7cb))
+
+
+
 <a name="2.7.0"></a>
 # 2.7.0 (2018-01-27)
 
