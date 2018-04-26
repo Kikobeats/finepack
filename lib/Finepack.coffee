@@ -4,7 +4,6 @@ Report      = require './Report'
 KEYWORDS    = require './Keywords'
 normalize   = require './Normalize'
 JSONisEqual = require 'json-is-equal'
-defaults    = require 'lodash.defaults'
 sort        = require 'sort-keys-recursive'
 
 DEFAULT =
@@ -34,7 +33,7 @@ sortObjectKeysBy = (obj, keyList) ->
 ###
 module.exports = (data, opts = {}, cb) ->
   return cb new TypeError("Need to provide 'data' parameter") unless data
-  defaults(opts, DEFAULT)
+  opts = Object.assign({}, DEFAULT, opts)
 
   report = new Report opts.filename, opts.color, opts.validate
 
