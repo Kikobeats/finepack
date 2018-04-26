@@ -12,6 +12,15 @@ const createLogger = require('acho')
 const loggerSkinCLI = require('acho-skin-cli')
 
 const finepack = require('./../lib/Finepack')
+
+const isPrivate = (filepath) => {
+  try {
+    return JSON.parse(filepath).private
+  } catch (err) {
+    return false
+  }
+}
+
 const cli = require('meow')({
   pkg,
   help: [
@@ -39,7 +48,7 @@ const filename = path.basename(filepath)
 
 let options = {
   filename,
-  validate: cli.flags.validate,
+  validate: cli.flags.validate || isPrivate(filepath),
   color: cli.flags.color
 }
 
