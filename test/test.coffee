@@ -18,6 +18,7 @@ describe 'Finepack ::', ->
     @fileFixedBackup = path.resolve 'test/fixtures/pkg_fixed_backup.json'
     @fileMalformed = path.resolve 'test/fixtures/pkg_malformed.json'
     @fileAlready = path.resolve 'test/fixtures/pkg_already_fine.json'
+    @filePrivate = path.resolve 'test/fixtures/pkg_private.json'
     @fileCustomProperty = path.resolve 'test/fixtures/pkg_custom_properties.json'
 
   beforeEach ->
@@ -86,6 +87,18 @@ describe 'Finepack ::', ->
         should(err).be.null()
         (messages.info[0]).should.be.equal 'pkg.json is already fine.'
         output.should.be.Object()
+        done()
+
+    it 'validate a private file', (done) ->
+      data = fs.readFileSync @filePrivate, {encoding: 'utf8'}
+      options = filename: 'pkg.json', validate: true
+
+      Finepack data, options, (err, output, messages) ->
+        should(err).be.null()
+        should(output.private).be.true()
+        should(output.description).be.undefined()
+        should(output.keywords).be.undefined()
+        should(messages.error.length).be.equal(0)
         done()
 
     it 'sort keywords', (done) ->

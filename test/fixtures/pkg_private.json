@@ -1,0 +1,31 @@
+{
+  "name": "fishpack",
+  "version": "1.0.0",
+  "private": true,
+  "bin": "./bin/fishpack",
+  "bugs": {
+    "url": "https://github.com/Kikobeats/fishpack/issues"
+  },
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "chalk": "*",
+    "coffee-script": "*",
+    "sort-keys-recursive": "*"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "homepage": "https://github.com/Kikobeats/fishpack",
+  "license": "MIT",
+  "main": "fishpack.js",
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Kikobeats/fishpack"
+  },
+  "scripts": {
+    "test": "sh test/test.sh"
+  }
+}

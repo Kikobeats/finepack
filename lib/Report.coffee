@@ -46,9 +46,11 @@ module.exports = class Report
     cb null, data, @logger.messages
 
   _validateRequiredKeys: (objt) ->
+    isPrivate = objt.private is true
     haveRequiredValues = false
+    collection = KEYWORDS[if isPrivate then 'requiredPrivate' else 'required']
 
-    for key in KEYWORDS.required when not objt[key]?
+    for key in collection when not objt[key]?
       @logger.push 'error', MSG.required(key)
       haveRequiredValues = true unless haveRequiredValues
 

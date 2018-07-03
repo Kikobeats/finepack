@@ -49,6 +49,11 @@ module.exports =
     'files'
   ]
 
+  requiredPrivate: [
+    'name'
+    'version'
+  ]
+
   inmutable: [
     'lint-staged'
   ]
