@@ -1,3 +1,10 @@
+<a name="2.8.1"></a>
+## 2.8.1 (2018-07-03)
+
+* Remove private warning fields ([5d0e842](https://github.com/Kikobeats/finepack/commit/5d0e842))
+
+
+
 <a name="2.8.0"></a>
 # 2.8.0 (2018-07-03)
 
