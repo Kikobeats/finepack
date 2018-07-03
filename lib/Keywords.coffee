@@ -12,6 +12,7 @@ module.exports =
   ]
 
   missingValues: [
+    'name'
     'keywords'
   ]
 
@@ -49,9 +50,10 @@ module.exports =
     'files'
   ]
 
-  requiredPrivate: [
-    'name'
-    'version'
+  private: [
+    'description'
+    'files'
+    'keywords'
   ]
 
   inmutable: [

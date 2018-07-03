@@ -98,6 +98,7 @@ describe 'Finepack ::', ->
         should(output.private).be.true()
         should(output.description).be.undefined()
         should(output.keywords).be.undefined()
+        should(messages.warn.length).be.equal(0)
         should(messages.error.length).be.equal(0)
         done()
 

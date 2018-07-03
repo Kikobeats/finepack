@@ -45,10 +45,15 @@ module.exports = class Report
     @logger.push 'info', MSG.alreadyFine(@name)
     cb null, data, @logger.messages
 
+  _isPrivate: (objt) -> objt.private is true
+
+  _determinateCollection: (collection, objt) ->
+    return collection unless @_isPrivate(objt)
+    collect = KEYWORDS.required.filter (i) -> KEYWORDS.missing.indexOf is -1
+
   _validateRequiredKeys: (objt) ->
-    isPrivate = objt.private is true
+    collection = @_determinateCollection(KEYWORDS.required, objt)
     haveRequiredValues = false
-    collection = KEYWORDS[if isPrivate then 'requiredPrivate' else 'required']
 
     for key in collection when not objt[key]?
       @logger.push 'error', MSG.required(key)
@@ -57,9 +62,10 @@ module.exports = class Report
     haveRequiredValues
 
   _validateMissingKeys: (objt) ->
+    collection = @_determinateCollection(KEYWORDS.missing, objt)
     haveMissingValues = false
 
-    for key in KEYWORDS.missing
+    for key in collection
       unless objt[key]?
         @logger.push 'warn', MSG.missing(key)
         haveMissingValues = true unless haveMissingValues
