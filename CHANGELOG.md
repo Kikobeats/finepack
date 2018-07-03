@@ -1,3 +1,10 @@
+<a name="2.8.0"></a>
+# 2.8.0 (2018-07-03)
+
+* Add private support ([dcb1967](https://github.com/Kikobeats/finepack/commit/dcb1967))
+
+
+
 <a name="2.7.2"></a>
 ## 2.7.2 (2018-04-26)
 
