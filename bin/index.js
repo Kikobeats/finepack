@@ -3,7 +3,7 @@
 'use strict'
 require('coffee-script').register()
 const pkg = require('../package.json')
-require('update-notifier')({pkg}).notify()
+require('update-notifier')({ pkg }).notify()
 
 const fs = require('fs')
 const os = require('os')
@@ -58,7 +58,7 @@ if (cli.flags.sortIgnoreObjectAt) {
   const ignoreObjectAtKeys = cliFlagCsvToArray('sortIgnoreObjectAt')
 
   if (ignoreObjectAtKeys.length) {
-    sortOptions = Object.assign({}, sortOptions, {ignoreObjectAtKeys})
+    sortOptions = Object.assign({}, sortOptions, { ignoreObjectAtKeys })
   }
 }
 
@@ -70,13 +70,13 @@ if (cli.flags.sortIgnoreArrayAt) {
   }
 }
 
-options = Object.assign({}, options, {sortOptions})
+options = Object.assign({}, options, { sortOptions })
 
 const stringify = (data) => {
   return JSON.stringify(data, null, 2) + os.EOL
 }
 
-fs.readFile(filepath, {encoding: 'utf8'}, (err, filedata) => {
+fs.readFile(filepath, { encoding: 'utf8' }, (err, filedata) => {
   if (err) throw err
 
   finepack(filedata, options, (error, output, messages) => {
@@ -94,7 +94,7 @@ fs.readFile(filepath, {encoding: 'utf8'}, (err, filedata) => {
     }
 
     output = stringify(output)
-    fs.writeFile(filepath, output, {encoding: 'utf8'}, (err) => {
+    fs.writeFile(filepath, output, { encoding: 'utf8' }, (err) => {
       if (err) throw err
       console.log()
       log.print()
