@@ -66,7 +66,7 @@ if (cli.flags.sortIgnoreArrayAt) {
   const ignoreArrayAtKeys = cliFlagCsvToArray('sortIgnoreArrayAt')
 
   if (ignoreArrayAtKeys.length) {
-    sortOptions = Object.assign({}, sortOptions, {ignoreArrayAtKeys})
+    sortOptions = Object.assign({}, sortOptions, { ignoreArrayAtKeys })
   }
 }
 
