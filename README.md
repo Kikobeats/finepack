@@ -63,7 +63,7 @@ const path = require('path')
 const finepack = require('finepack')
 const filepath = path.resolve('./package.json')
 const filename = path.basename(filepath)
-const filedata = fs.readFileSync(filepath, {encoding: 'utf8'})
+const filedata = fs.readFileSync(filepath, { encoding: 'utf8' })
 
 const options = {
   filename: filename, // To customize the output messages, but it is not necessary.
