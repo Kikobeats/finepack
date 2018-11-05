@@ -13,7 +13,9 @@ const loggerSkinCLI = require('acho-skin-cli')
 
 const finepack = require('./../lib/Finepack')
 
-const isPrivate = (filepath) => {
+const isNil = value => value === undefined || value === null
+
+const isPrivate = filepath => {
   try {
     return JSON.parse(filepath).private
   } catch (err) {
@@ -29,18 +31,24 @@ const cli = require('meow')({
     '\n  options:',
     '\t --no-validate\t\t   disable validate mode.',
     '\t --no-color\t\t   disable colors in the output.',
-    '\t --sort-ignore-object-at   don\'t sort object(s) at these comma separated key(s).',
-    '\t --sort-ignore-array-at    don\'t sort array(s) at these comma separated key(s).',
+    "\t --sort-ignore-object-at   don't sort object(s) at these comma separated key(s).",
+    "\t --sort-ignore-array-at    don't sort array(s) at these comma separated key(s).",
     '\t --version\t\t   output the current version.',
     '\n  examples:',
     '\t finepack package.json',
     '\t finepack bower.json --no-validate'
-  ].join('\n')
+  ].join('\n'),
+  flags: {
+    validate: {
+      type: 'boolean',
+      default: true
+    }
+  }
 })
 
 if (cli.input.length === 0) cli.showHelp()
 
-const cliFlagCsvToArray = (flagName) =>
+const cliFlagCsvToArray = flagName =>
   cli.flags[flagName].toString().split(',').filter(e => e)
 
 const filepath = path.resolve(cli.input[0])
@@ -48,7 +56,9 @@ const filename = path.basename(filepath)
 
 let options = {
   filename,
-  validate: cli.flags.validate || isPrivate(filepath),
+  validate: isNil(cli.flags.validate)
+    ? isPrivate(filepath)
+    : cli.flags.validate,
   color: cli.flags.color
 }
 
@@ -72,7 +82,7 @@ if (cli.flags.sortIgnoreArrayAt) {
 
 options = Object.assign({}, options, { sortOptions })
 
-const stringify = (data) => {
+const stringify = data => {
   return JSON.stringify(data, null, 2) + os.EOL
 }
 
@@ -94,7 +104,8 @@ fs.readFile(filepath, { encoding: 'utf8' }, (err, filedata) => {
     }
 
     output = stringify(output)
-    fs.writeFile(filepath, output, { encoding: 'utf8' }, (err) => {
+
+    fs.writeFile(filepath, output, { encoding: 'utf8' }, err => {
       if (err) throw err
       console.log()
       log.print()
