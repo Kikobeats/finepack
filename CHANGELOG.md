@@ -1,3 +1,13 @@
+<a name="2.8.2"></a>
+## 2.8.2 (2018-11-05)
+
+* Enable validate by default ([0fe0a44](https://github.com/Kikobeats/finepack/commit/0fe0a44))
+* Fix lint ([93e3cb8](https://github.com/Kikobeats/finepack/commit/93e3cb8))
+* Update index.js ([3294f14](https://github.com/Kikobeats/finepack/commit/3294f14))
+* Update index.js ([919bd7a](https://github.com/Kikobeats/finepack/commit/919bd7a))
+
+
+
 <a name="2.8.1"></a>
 ## 2.8.1 (2018-07-03)
 
