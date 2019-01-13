@@ -1,3 +1,10 @@
+<a name="2.9.0"></a>
+# 2.9.0 (2019-01-13)
+
+* Add package.json as fallback ([536420d](https://github.com/Kikobeats/finepack/commit/536420d))
+
+
+
 <a name="2.8.2"></a>
 ## 2.8.2 (2018-11-05)
 
