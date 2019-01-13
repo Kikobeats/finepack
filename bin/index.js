@@ -46,12 +46,13 @@ const cli = require('meow')({
   }
 })
 
-if (cli.input.length === 0) cli.showHelp()
-
 const cliFlagCsvToArray = flagName =>
-  cli.flags[flagName].toString().split(',').filter(e => e)
+  cli.flags[flagName]
+    .toString()
+    .split(',')
+    .filter(e => e)
 
-const filepath = path.resolve(cli.input[0])
+const filepath = path.resolve(cli.input[0] || 'package.json')
 const filename = path.basename(filepath)
 
 let options = {
