@@ -47,7 +47,7 @@
     "jsonlint": "~1.6.2",
     "lodash.omit": "~4.5.0",
     "meow": "~5.0.0",
-    "normalize-package-data": "~2.4.0",
+    "normalize-package-data": "~2.5.0",
     "sort-keys-recursive": "~2.0.1",
     "update-notifier": "~2.5.0"
   },
