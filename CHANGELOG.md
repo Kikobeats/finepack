@@ -1,3 +1,13 @@
+<a name="2.9.1"></a>
+## 2.9.1 (2019-07-02)
+
+* build: update dependencies ([28759b3](https://github.com/Kikobeats/finepack/commit/28759b3))
+* Update README.md ([adb57b1](https://github.com/Kikobeats/finepack/commit/adb57b1))
+* fix(package): update normalize-package-data to version 2.5.0 ([66454cf](https://github.com/Kikobeats/finepack/commit/66454cf))
+* fix(package): update update-notifier to version 2.6.0 ([abf0a65](https://github.com/Kikobeats/finepack/commit/abf0a65))
+
+
+
 <a name="2.9.0"></a>
 # 2.9.0 (2019-01-13)
 
