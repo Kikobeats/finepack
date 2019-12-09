@@ -1,3 +1,10 @@
+<a name="2.9.2"></a>
+## 2.9.2 (2019-12-09)
+
+* build: update dependencies ([db3cf37](https://github.com/Kikobeats/finepack/commit/db3cf37))
+
+
+
 <a name="2.9.1"></a>
 ## 2.9.1 (2019-07-02)
 
