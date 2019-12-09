@@ -1,3 +1,10 @@
+<a name="2.10.0"></a>
+# 2.10.0 (2019-12-09)
+
+* build: migrate cofeescript & mocha ([7b1fded](https://github.com/Kikobeats/finepack/commit/7b1fded))
+
+
+
 <a name="2.9.2"></a>
 ## 2.9.2 (2019-12-09)
 
