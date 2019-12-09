@@ -40,13 +40,13 @@
   "dependencies": {
     "acho": "~4.0.4",
     "acho-skin-cli": "~2.0.1",
-    "chalk": "~2.4.2",
+    "chalk": "~3.0.0",
     "coffee-script": "~1.12.7",
     "existential-default": "~1.3.1",
     "json-is-equal": "~1.0.0",
     "jsonlint": "~1.6.3",
     "lodash.omit": "~4.5.0",
-    "meow": "~5.0.0",
+    "meow": "~6.0.0",
     "normalize-package-data": "~2.5.0",
     "sort-keys-recursive": "~2.0.1",
     "update-notifier": "~3.0.1"
