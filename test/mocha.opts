@@ -1,4 +1,4 @@
---compilers coffee:coffee-script/register
+--require coffeescript/register
 --bail
 --require should
 --reporter spec

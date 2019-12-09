@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 'use strict'
-require('coffee-script').register()
+require('coffeescript').register()
 const pkg = require('../package.json')
 require('update-notifier')({ pkg }).notify()
 
