@@ -1,3 +1,10 @@
+## <small>2.10.1 (2020-01-20)</small>
+
+* Bump coffeescript from 2.4.1 to 2.5.0 ([42eb823](https://github.com/Kikobeats/finepack/commit/42eb823))
+* Bump update-notifier from 3.0.1 to 4.0.0 ([329a699](https://github.com/Kikobeats/finepack/commit/329a699))
+
+
+
 <a name="2.10.0"></a>
 # 2.10.0 (2019-12-09)
 
