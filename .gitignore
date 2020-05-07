@@ -32,3 +32,4 @@ coverage
 ############################
 .node_history
 .nyc_output
+.envrc
