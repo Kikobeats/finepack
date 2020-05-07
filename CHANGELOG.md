@@ -1,9 +1,22 @@
-## <small>2.10.1 (2020-01-20)</small>
+# Changelog
 
-* Bump coffeescript from 2.4.1 to 2.5.0 ([42eb823](https://github.com/Kikobeats/finepack/commit/42eb823))
-* Bump update-notifier from 3.0.1 to 4.0.0 ([329a699](https://github.com/Kikobeats/finepack/commit/329a699))
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### 2.10.2 (2020-05-07)
 
 
+### Bug Fixes
+
+* **package:** update chalk to version 2.2.0 ([d7c7e2c](https://github.com/Kikobeats/finepack/commit/d7c7e2c809544d9a0bb07bec63dac06ff6f66a4a))
+* **package:** update chalk to version 2.3.0 ([8f76a1e](https://github.com/Kikobeats/finepack/commit/8f76a1ea6f32773a319fb66d5091d8afb4cbe6ed))
+* **package:** update chalk to version 2.4.0 ([c53c4e9](https://github.com/Kikobeats/finepack/commit/c53c4e90100d505c55bcfb3fcf5fb655279de6ae))
+* **package:** update meow to version 4.0.0 ([10795c9](https://github.com/Kikobeats/finepack/commit/10795c92228b9f049b9919edea26afc360a8f034))
+* **package:** update meow to version 5.0.0 ([ad78097](https://github.com/Kikobeats/finepack/commit/ad78097403bc492add1d1860c33665ffb6376ef0))
+* **package:** update normalize-package-data to version 2.5.0 ([66454cf](https://github.com/Kikobeats/finepack/commit/66454cf395d3f905405ecc083ed8c2481290676b))
+* **package:** update update-notifier to version 2.3.0 ([fdd33e2](https://github.com/Kikobeats/finepack/commit/fdd33e28e5ff522c153ce580f302e2dc6a73cf53))
+* **package:** update update-notifier to version 2.4.0 ([8c81cbd](https://github.com/Kikobeats/finepack/commit/8c81cbd629de3dd1c64cb6ada8a04300e9fc69d2))
+* **package:** update update-notifier to version 2.5.0 ([e90d7cb](https://github.com/Kikobeats/finepack/commit/e90d7cb130bb4eeb33ff929e91b4303503033032))
+* **package:** update update-notifier to version 2.6.0 ([abf0a65](https://github.com/Kikobeats/finepack/commit/abf0a6597fcbe58e9a4e23fe5016e8ad3c109988))
 
 <a name="2.10.0"></a>
 # 2.10.0 (2019-12-09)
@@ -453,6 +466,3 @@
 * deleted unnecessary depedency ([8775132](https://github.com/Kikobeats/finepack/commit/8775132))
 * first commit ([4853cf1](https://github.com/Kikobeats/finepack/commit/4853cf1))
 * update travis ([2fcaa2c](https://github.com/Kikobeats/finepack/commit/2fcaa2c))
-
-
-
