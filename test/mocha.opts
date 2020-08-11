@@ -1,6 +1,0 @@
---require coffeescript/register
---bail
---require should
---reporter spec
---timeout 120000
---slow 300

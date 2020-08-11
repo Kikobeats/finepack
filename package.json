@@ -89,7 +89,7 @@
     "release": "standard-version -a",
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin HEAD:master",
-    "test": "nyc mocha test/test.coffee",
+    "test": "nyc mocha test/*.coffee",
     "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"
   },
@@ -109,6 +109,14 @@
   "lint-staged": {
     "package.json": [
       "finepack"
+    ]
+  },
+  "mocha": {
+    "bail": true,
+    "reporter": "spec",
+    "require": [
+      "coffeescript/register",
+      "should"
     ]
   }
 }
