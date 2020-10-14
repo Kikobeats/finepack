@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.7](https://github.com/Kikobeats/finepack/compare/v2.10.6...v2.10.7) (2020-10-14)
+
 ### [2.10.6](https://github.com/Kikobeats/finepack/compare/v2.10.5...v2.10.6) (2020-09-30)
 
 ### [2.10.5](https://github.com/Kikobeats/finepack/compare/v2.10.4...v2.10.5) (2020-08-11)
