@@ -12,6 +12,12 @@
     "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
   },
+  "contributors": [
+    {
+      "name": "Peter deHaan",
+      "email": "peter@deseloper.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/Kikobeats/finepack.git"
