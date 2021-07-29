@@ -52,7 +52,7 @@
     "json-is-equal": "~1.0.0",
     "jsonlint": "~1.6.3",
     "lodash.omit": "~4.5.0",
-    "meow": "~9.0.0",
+    "meow": "~10.1.1",
     "normalize-package-data": "~3.0.0",
     "sort-keys-recursive": "~2.1.0",
     "update-notifier": "~5.1.0"
