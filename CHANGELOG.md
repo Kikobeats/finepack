@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.10.13 (2022-04-01)
+
 ### 2.10.12 (2022-03-15)
 
 ### [2.10.11](https://github.com/Kikobeats/finepack/compare/v2.10.10...v2.10.11) (2021-01-08)
