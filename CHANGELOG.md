@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 2.11.0 (2023-09-03)
+
+
+### Features
+
+* add some bundle fields ([6267c6e](https://github.com/Kikobeats/finepack/commit/6267c6e184977ee3b2a0c6ff0df65f1ffb055e71))
+
 ### 2.10.15 (2022-04-25)
 
 ### 2.10.14 (2022-04-12)
