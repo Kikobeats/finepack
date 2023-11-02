@@ -2,7 +2,7 @@
   "name": "finepack",
   "description": "Organizes and maintains your JSON files readable",
   "homepage": "https://github.com/Kikobeats/finepack",
-  "version": "2.12.0",
+  "version": "2.12.1",
   "main": "index.js",
   "bin": {
     "finepack": "bin/index.js"
@@ -13,9 +13,18 @@
     "url": "https://github.com/Kikobeats"
   },
   "contributors": [
-    "matteocng <matteocng@users.noreply.github.com>",
-    "Peter deHaan <peter@deseloper.com>",
-    "Jan Stola <iamstolis@users.noreply.github.com>"
+    {
+      "name": "matteocng",
+      "email": "matteocng@users.noreply.github.com"
+    },
+    {
+      "name": "Peter deHaan",
+      "email": "peter@deseloper.com"
+    },
+    {
+      "name": "Jan Stola",
+      "email": "iamstolis@users.noreply.github.com"
+    }
   ],
   "repository": {
     "type": "git",

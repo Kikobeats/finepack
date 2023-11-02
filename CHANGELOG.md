@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.12.1](https://github.com/Kikobeats/finepack/compare/v2.12.0...v2.12.1) (2023-11-02)
+
+
+### Bug Fixes
+
+* flag initialization ([917bed2](https://github.com/Kikobeats/finepack/commit/917bed2fbb13ef70603a7e5339bde762ae871a6d))
+
 ## [2.12.0](https://github.com/Kikobeats/finepack/compare/v2.11.4...v2.12.0) (2023-11-02)
 
 
