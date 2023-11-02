@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
 'use strict'
-require('coffeescript').register()
-const pkg = require('../package.json')
-require('update-notifier')({ pkg }).notify()
 
+require('coffeescript').register()
+
+const loggerSkinCLI = require('acho-skin-cli')
+const createLogger = require('acho')
+const path = require('path')
+const mri = require('mri')
 const fs = require('fs')
 const os = require('os')
-const path = require('path')
-const createLogger = require('acho')
-const loggerSkinCLI = require('acho-skin-cli')
 
 const finepack = require('./../lib/Finepack')
 
@@ -18,84 +18,73 @@ const isNil = value => value === undefined || value === null
 const isPrivate = filepath => {
   try {
     return JSON.parse(filepath).private
-  } catch (err) {
+  } catch (_) {
     return false
   }
 }
 
-const cli = require('meow')({
-  pkg,
-  help: [
-    'Usage',
-    '  $ finepack <fileJSON> [options]',
-    '\n  options:',
-    '\t --no-validate\t\t   disable validate mode.',
-    '\t --no-color\t\t   disable colors in the output.',
-    "\t --sort-ignore-object-at   don't sort object(s) at these comma separated key(s).",
-    "\t --sort-ignore-array-at    don't sort array(s) at these comma separated key(s).",
-    '\t --version\t\t   output the current version.',
-    '\n  examples:',
-    '\t finepack package.json',
-    '\t finepack bower.json --no-validate'
-  ].join('\n'),
-  flags: {
-    validate: {
-      type: 'boolean',
-      default: true
-    }
+const help = [
+  'Usage',
+  '  $ finepack <fileJSON> [options]',
+  '\n  options:',
+  '\t --no-validate\t\t   disable validate mode.',
+  '\t --no-color\t\t   disable colors in the output.',
+  "\t --sort-ignore-object-at   don't sort object(s) at these comma separated key(s).",
+  "\t --sort-ignore-array-at    don't sort array(s) at these comma separated key(s).",
+  '\t --version\t\t   output the current version.',
+  '\n  examples:',
+  '\t finepack package.json',
+  '\t finepack bower.json --no-validate'
+].join('\n')
+
+const { _: input, ...flags } = mri(process.argv.slice(2), {
+  default: {
+    ignoreObjectAtKeys: ['ava', 'exports'],
+    validate: true
   }
 })
 
-const cliFlagCsvToArray = flagName =>
-  cli.flags[flagName]
+if (flags.version) {
+  console.log(require('../package.json').version)
+  process.exit()
+}
+
+if (input.length === 0 || flags.help) {
+  console.log(help)
+  process.exit()
+}
+
+const cliFlagCsvToArray = value =>
+  value
     .toString()
     .split(',')
     .filter(e => e)
 
-const filepath = path.resolve(cli.input[0] || 'package.json')
+const filepath = path.resolve(input[0] || 'package.json')
 const filename = path.basename(filepath)
 
-let options = {
+const options = {
   filename,
-  validate: isNil(cli.flags.validate)
-    ? isPrivate(filepath)
-    : cli.flags.validate,
-  color: cli.flags.color
+  validate: isNil(flags.validate) ? isPrivate(filepath) : flags.validate,
+  color: flags.color
 }
 
-let sortOptions = {}
+const sortOptions = {}
+const ignoreObjectAtKeys = cliFlagCsvToArray(flags['sort-ignore-object-at'])
+if (ignoreObjectAtKeys.length) Object.assign(sortOptions, { ignoreObjectAtKeys })
+const ignoreArrayAtKeys = cliFlagCsvToArray(flags['sort-ignore-array-at'])
+if (ignoreArrayAtKeys.length) Object.assign(sortOptions, { ignoreArrayAtKeys })
+Object.assign(options, { sortOptions })
 
-if (cli.flags.sortIgnoreObjectAt) {
-  const ignoreObjectAtKeys = cliFlagCsvToArray('sortIgnoreObjectAt')
-
-  if (ignoreObjectAtKeys.length) {
-    sortOptions = Object.assign({}, sortOptions, { ignoreObjectAtKeys })
-  }
-}
-
-if (cli.flags.sortIgnoreArrayAt) {
-  const ignoreArrayAtKeys = cliFlagCsvToArray('sortIgnoreArrayAt')
-
-  if (ignoreArrayAtKeys.length) {
-    sortOptions = Object.assign({}, sortOptions, { ignoreArrayAtKeys })
-  }
-}
-
-options = Object.assign({}, options, { sortOptions })
-
-const stringify = data => {
-  return JSON.stringify(data, null, 2) + os.EOL
-}
-
-fs.readFile(filepath, { encoding: 'utf8' }, (err, filedata) => {
-  if (err) throw err
+fs.readFile(filepath, { encoding: 'utf8' }, (error, filedata) => {
+  if (error) throw error
 
   finepack(filedata, options, (error, output, messages) => {
     const log = createLogger({
       types: loggerSkinCLI,
       keyword: 'symbol',
       color: options.color,
-      messages: messages
+      messages
     })
 
     if (error) {
@@ -104,10 +93,10 @@ fs.readFile(filepath, { encoding: 'utf8' }, (err, filedata) => {
       return process.exit(1)
     }
 
-    output = stringify(output)
+    output = JSON.stringify(output, null, 2) + os.EOL
 
-    fs.writeFile(filepath, output, { encoding: 'utf8' }, err => {
-      if (err) throw err
+    fs.writeFile(filepath, output, { encoding: 'utf8' }, error => {
+      if (error) throw error
       console.log()
       log.print()
     })
