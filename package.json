@@ -13,18 +13,9 @@
     "url": "https://github.com/Kikobeats"
   },
   "contributors": [
-    {
-      "name": "matteocng",
-      "email": "matteocng@users.noreply.github.com"
-    },
-    {
-      "name": "Peter deHaan",
-      "email": "peter@deseloper.com"
-    },
-    {
-      "name": "Jan Stola",
-      "email": "iamstolis@users.noreply.github.com"
-    }
+    "matteocng <matteocng@users.noreply.github.com>",
+    "Peter deHaan <peter@deseloper.com>",
+    "Jan Stola <iamstolis@users.noreply.github.com>"
   ],
   "repository": {
     "type": "git",
