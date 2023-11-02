@@ -23,6 +23,12 @@ const isPrivate = filepath => {
   }
 }
 
+const cliFlagCsvToArray = (value = '') =>
+  value
+    .toString()
+    .split(',')
+    .filter(e => e)
+
 const help = [
   'Usage',
   '  $ finepack <fileJSON> [options]',
@@ -49,16 +55,10 @@ if (flags.version) {
   process.exit()
 }
 
-if (input.length === 0 || flags.help) {
+if (flags.help) {
   console.log(help)
   process.exit()
 }
-
-const cliFlagCsvToArray = (value = '') =>
-  value
-    .toString()
-    .split(',')
-    .filter(e => e)
 
 const filepath = path.resolve(input[0] || 'package.json')
 const filename = path.basename(filepath)
