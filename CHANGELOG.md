@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.12.0](https://github.com/Kikobeats/finepack/compare/v2.11.4...v2.12.0) (2023-11-02)
+
+
+### Bug Fixes
+
+* default value ([bca0bba](https://github.com/Kikobeats/finepack/commit/bca0bba88addc49c149c9fb75f2f59d1ba43b4d3))
+
 ### 2.11.4 (2023-11-02)
 
 ### 2.11.3 (2023-10-24)
