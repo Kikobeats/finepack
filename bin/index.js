@@ -39,7 +39,7 @@ const help = [
 
 const { _: input, ...flags } = mri(process.argv.slice(2), {
   default: {
-    ignoreObjectAtKeys: ['ava', 'exports'],
+    'sort-ignore-object-at': ['ava', 'exports'],
     validate: true
   }
 })
