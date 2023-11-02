@@ -54,7 +54,7 @@ if (input.length === 0 || flags.help) {
   process.exit()
 }
 
-const cliFlagCsvToArray = value =>
+const cliFlagCsvToArray = (value = '') =>
   value
     .toString()
     .split(',')
