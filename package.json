@@ -61,8 +61,8 @@
     "jsonlint": "~1.6.3",
     "lodash.omit": "~4.5.0",
     "mri": "~1.2.0",
-    "normalize-package-data": "~4.0.0",
-    "sort-keys-recursive": "~2.1.7"
+    "normalize-package-data": "~6.0.1",
+    "sort-keys-recursive": "~2.1.10"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
@@ -79,7 +79,6 @@
     "should": "latest",
     "simple-git-hooks": "latest",
     "standard": "latest",
-    "standard-markdown": "latest",
     "standard-version": "latest"
   },
   "engines": {
@@ -93,7 +92,7 @@
   "scripts": {
     "clean": "npm prune && npm i ",
     "contributors": "(npx git-authors-cli && npx finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
-    "lint": "standard-markdown && standard",
+    "lint": "standard",
     "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
     "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
