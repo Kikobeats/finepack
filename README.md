@@ -1,10 +1,7 @@
 # finepack
 
 ![Last version](https://img.shields.io/github/tag/Kikobeats/finepack.svg?style=flat-square)
-[![Build Status](https://img.shields.io/travis/Kikobeats/finepack/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/finepack)
 [![Coverage Status](https://img.shields.io/coveralls/Kikobeats/finepack.svg?style=flat-square)](https://coveralls.io/github/Kikobeats/finepack)
-[![Dependency status](https://img.shields.io/david/Kikobeats/finepack.svg?style=flat-square)](https://david-dm.org/Kikobeats/finepack)
-[![Dev Dependencies Status](https://img.shields.io/david/dev/Kikobeats/finepack.svg?style=flat-square)](https://david-dm.org/Kikobeats/finepack#info=devDependencies)
 [![NPM Status](https://img.shields.io/npm/dm/finepack.svg?style=flat-square)](https://www.npmjs.org/package/finepack)
 
 > Organizes and maintains your JSON files readable.
