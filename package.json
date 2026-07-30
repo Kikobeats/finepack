@@ -1,6 +1,6 @@
 {
   "name": "finepack",
-  "description": "Organizes and maintains your JSON files readable",
+  "description": "Lint and organize package.json into a deterministic, readable key order for clean diffs.",
   "homepage": "https://github.com/Kikobeats/finepack",
   "version": "2.12.18",
   "main": "index.js",
@@ -21,21 +21,15 @@
     "url": "https://github.com/Kikobeats/finepack/issues"
   },
   "keywords": [
-    "clean",
-    "cleanup",
     "cli",
     "deterministic",
-    "esthetic",
+    "format",
     "json",
     "lint",
     "organize",
-    "package",
     "package.json",
     "pkg",
-    "tool",
-    "tooling",
-    "util",
-    "utility",
+    "sort",
     "validate"
   ],
   "dependencies": {
