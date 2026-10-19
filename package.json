@@ -2,7 +2,7 @@
   "name": "finepack",
   "description": "Lint and organize package.json into a deterministic, readable key order for clean diffs.",
   "homepage": "https://github.com/Kikobeats/finepack",
-  "version": "2.12.21",
+  "version": "2.12.22",
   "main": "index.js",
   "bin": {
     "finepack": "bin/index.js"
