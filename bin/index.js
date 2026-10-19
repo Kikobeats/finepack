@@ -77,7 +77,11 @@ if (ignoreArrayAtKeys.length) Object.assign(sortOptions, { ignoreArrayAtKeys })
 Object.assign(options, { sortOptions })
 
 fs.readFile(filepath, { encoding: 'utf8' }, (error, filedata) => {
-  if (error) throw error
+  if (error) {
+    console.error('finepack: Cannot read "%s": %s', filepath, error.message)
+    process.exitCode = 1
+    return
+  }
 
   finepack(filedata, options, (error, output, messages) => {
     const log = createLogger({
