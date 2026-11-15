@@ -8,6 +8,8 @@ path = require 'path'
 
 cli = path.resolve __dirname, '../bin/index.js'
 
+[SUCCESS, ERROR] = if process.platform is 'win32' then ['√', '×'] else ['✔', '✖']
+
 truecolorEnv = ->
   env = Object.assign {}, process.env, FORCE_COLOR: '1', COLORTERM: 'truecolor'
   delete env.CI
@@ -71,7 +73,7 @@ describe 'CLI file reads ::', ->
   it 'prints messages with symbols on stdout', ->
     fs.writeFileSync path.join(@directory, 'package.json'), '{"z":2,"a":1}'
     result = @run ['--no-validate', '--no-color']
-    assert.strictEqual result.stdout, os.EOL + '✔ package.json is now fine.' + os.EOL
+    assert.strictEqual result.stdout, "\n#{SUCCESS} package.json is now fine.\n"
 
   it 'disables colors with --no-color even when the terminal forces them', ->
     fs.writeFileSync path.join(@directory, 'package.json'), '{"z":2,"a":1}'
@@ -89,7 +91,7 @@ describe 'CLI file reads ::', ->
     result = @run ['--no-color']
     assert.strictEqual result.status, 1
     assert.strictEqual result.stderr, ''
-    assert.strictEqual result.stdout, "✖ Need to provide 'data' parameter" + os.EOL
+    assert.strictEqual result.stdout, "#{ERROR} Need to provide 'data' parameter\n"
     assert.strictEqual fs.readFileSync(filepath, 'utf8'), ''
 
   it 'mirrors every message to debug-logfmt under DEBUG=finepack*', ->
@@ -127,22 +129,22 @@ describe 'CLI file reads ::', ->
     fs.writeFileSync path.join(@directory, 'package.json'), '{"z":2,"a":1}'
     result = spawnSync process.execPath, [cli, '--no-validate'],
       cwd: @directory, encoding: 'utf8', env: truecolorEnv()
-    assert.strictEqual result.stdout, os.EOL + '\u001b[38;2;51;255;102m✔\u001b[39m package.json is now fine.' + os.EOL
+    assert.strictEqual result.stdout, "\n\u001b[38;2;51;255;102m#{SUCCESS}\u001b[39m package.json is now fine.\n"
 
   it 'paints message text gray with --color', ->
     fs.writeFileSync path.join(@directory, 'package.json'), '{"z":2,"a":1}'
     result = spawnSync process.execPath, [cli, '--no-validate', '--color'],
       cwd: @directory, encoding: 'utf8', env: truecolorEnv()
-    assert.strictEqual result.stdout, os.EOL + '\u001b[38;2;51;255;102m✔\u001b[39m \u001b[90mpackage.json is now fine.\u001b[39m' + os.EOL
+    assert.strictEqual result.stdout, "\n\u001b[38;2;51;255;102m#{SUCCESS}\u001b[39m \u001b[90mpackage.json is now fine.\u001b[39m\n"
 
   it 'prints the exact malformed JSON report', ->
     fs.writeFileSync path.join(@directory, 'package.json'), '{not json}'
     result = @run ['--no-color']
     assert.strictEqual result.stdout, [
-      '✖ Something in package.json is wrong. See below.'
-      '✖ Parse error on line 1:'
+      "#{ERROR} Something in package.json is wrong. See below."
+      "#{ERROR} Parse error on line 1:"
       '{not json}'
       '-^'
       "Expecting 'STRING', '}', got 'undefined'"
-    ].join(os.EOL) + os.EOL
+    ].join('\n') + '\n'
 
