@@ -7,7 +7,6 @@ JSONisEqual = require 'json-is-equal'
 sort        = require 'sort-keys-recursive'
 
 DEFAULT =
-  color: true
   validate: true
   filename: ''
 
@@ -26,7 +25,6 @@ sortObjectKeysBy = (obj, keyList) ->
   @description Organize the keys of a JSON file.
   * @param  {string} data
   * @param  {opts} object
-  * @param  [boolean] opts.color    Activates the colorization of the messages.
   * @param  [boolean] opts.validate Activates keyword validation.
   * @param  [string]  opts.filename Customizes the output messages.
   * @param  [object]  opts.sortOptions Customizes the sort options.
@@ -35,7 +33,7 @@ module.exports = (data, opts = {}, cb) ->
   return cb new TypeError("Need to provide 'data' parameter") unless data
   opts = Object.assign({}, DEFAULT, opts)
 
-  report = new Report opts.filename, opts.color, opts.validate
+  report = new Report opts.filename, opts.validate
 
   # We only handle well formed data.
   try

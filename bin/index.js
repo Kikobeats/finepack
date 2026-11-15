@@ -4,14 +4,13 @@
 
 require('coffeescript').register()
 
-const loggerSkinCLI = require('acho-skin-cli')
-const createLogger = require('acho')
 const path = require('path')
 const mri = require('mri')
 const fs = require('fs')
 const os = require('os')
 
 const finepack = require('./../lib/Finepack')
+const { render, trace } = require('./../lib/Logger')
 
 const isNil = value => value === undefined || value === null
 
@@ -76,6 +75,9 @@ const ignoreArrayAtKeys = cliFlagCsvToArray(flags['sort-ignore-array-at'])
 if (ignoreArrayAtKeys.length) Object.assign(sortOptions, { ignoreArrayAtKeys })
 Object.assign(options, { sortOptions })
 
+const print = messages =>
+  render(messages, { color: options.color }).forEach(line => console.log(line))
+
 fs.readFile(filepath, { encoding: 'utf8' }, (error, filedata) => {
   if (error) {
     console.error('finepack: Cannot read "%s": %s', filepath, error.message)
@@ -84,16 +86,12 @@ fs.readFile(filepath, { encoding: 'utf8' }, (error, filedata) => {
   }
 
   finepack(filedata, options, (error, output, messages) => {
-    const log = createLogger({
-      types: loggerSkinCLI,
-      keyword: 'symbol',
-      color: options.color,
-      messages
-    })
-
     if (error) {
-      log.print()
-      log.error(output)
+      const reason = output || error
+      const message = reason.message || reason
+      trace('error', message)
+      print(messages)
+      print({ error: [message] })
       return process.exit(1)
     }
 
@@ -102,7 +100,7 @@ fs.readFile(filepath, { encoding: 'utf8' }, (error, filedata) => {
     fs.writeFile(filepath, output, { encoding: 'utf8' }, error => {
       if (error) throw error
       console.log()
-      log.print()
+      print(messages)
     })
   })
 })

@@ -13,8 +13,8 @@ DEFAULT =
 
 module.exports = class Report
 
-  constructor: (@name = 'Your file', @isColorizable = false, @isValidationEnable = false) ->
-    @logger = Logger color: @isColorizable
+  constructor: (@name = 'Your file', @isValidationEnable = false) ->
+    @logger = new Logger()
 
   lint: (objt) ->
     objt = JSON.stringify(objt) if typeof objt isnt 'string'
