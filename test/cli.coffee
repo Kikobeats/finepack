@@ -11,7 +11,7 @@ cli = path.resolve __dirname, '../bin/index.js'
 [SUCCESS, ERROR] = if process.platform is 'win32' then ['√', '×'] else ['✔', '✖']
 
 truecolorEnv = ->
-  env = Object.assign {}, process.env, FORCE_COLOR: '1', COLORTERM: 'truecolor'
+  env = Object.assign {}, process.env, FORCE_COLOR: '3', COLORTERM: 'truecolor'
   delete env.CI
   env
 
