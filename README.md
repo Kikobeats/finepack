@@ -64,7 +64,6 @@ const filedata = fs.readFileSync(filepath, { encoding: 'utf8' })
 const options = {
   filename: filename, // To customize the output messages, but it is not necessary.
   validate: false, // To enable (or not) keys validation (false by default).
-  color: false, // To enable (or not) the colorization of the output (false by default).
   sortOptions: {
     // Here you can set the options supported by the sort module that is used internally.
     // SEE: https://github.com/Kikobeats/sort-keys-recursive#options
@@ -74,7 +73,16 @@ const options = {
 finepack(filedata, options, function (err, output, messages) {
   if (err) throw err
   // if your JSON is malformed then you have an err
+  // messages is { debug, info, success, warn, error }, each an array of strings
 })
+```
+
+### Debug
+
+Every message is also emitted through [debug-logfmt](https://github.com/Kikobeats/debug-logfmt) under the `finepack` namespace:
+
+```bash
+$ DEBUG=finepack* finepack package.json
 ```
 
 ## License
